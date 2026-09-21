@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCounters();
-  initTimetable();
   initBmiCalculator();
   initModalsAndForms();
 });
@@ -96,46 +95,81 @@ function initBmiCalculator() {
   const bmiValueElem = document.getElementById('bmi-value');
   const bmiStatusElem = document.getElementById('bmi-status');
   const bmiAdviceElem = document.getElementById('bmi-advice');
+  const bmiBookBtn = document.getElementById('bmi-book-btn');
 
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const height = parseFloat(document.getElementById('bmi-height').value);
-    const weight = parseFloat(document.getElementById('bmi-weight').value);
-    const goal = document.getElementById('bmi-goal').value;
+    const heightInput = document.getElementById('bmi-height');
+    const weightInput = document.getElementById('bmi-weight');
+    const goalSelect = document.getElementById('bmi-goal');
 
-    if (!height || !weight || height <= 0 || weight <= 0) {
-      showToast('Пожалуйста, введите корректный рост и вес', 'error');
+    const height = parseFloat(heightInput.value);
+    const weight = parseFloat(weightInput.value);
+    const goal = goalSelect ? goalSelect.value : 'tone';
+
+    if (!height || !weight || height < 80 || height > 260 || weight < 25 || weight > 350) {
+      showToast('Пожалуйста, введите корректный рост (см) и вес (кг)', 'error');
       return;
     }
 
     const heightInMeters = height / 100;
     const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
 
+    // Сброс подсветки строк таблицы
+    document.querySelectorAll('.bmi-range-row').forEach(row => {
+      row.classList.remove('bg-white/10', 'border-white', 'shadow-lg');
+      row.classList.add('bg-[#151515]', 'border-transparent');
+    });
+
     let status = '';
     let advice = '';
+    let activeRowId = '';
 
     if (bmi < 18.5) {
       status = 'Дефицит массы';
-      advice = 'Рекомендуем силовую программу бодибилдинга и профицит калорий с тренером VM GYM для набора мышечной массы.';
+      activeRowId = 'bmi-row-1';
+      advice = 'Ваш ИМТ ниже нормы. Рекомендуем программу силового набора массы, упражнения с отягощениями и профицитный план питания от наставников VM GYM.';
     } else if (bmi >= 18.5 && bmi < 24.9) {
       status = 'Нормальный баланс';
-      advice = 'Отличная форма! Вам подойдут силовые тренировки, пауэрлифтинг и функциональный тренинг в залах VM GYM.';
+      activeRowId = 'bmi-row-2';
+      advice = 'Отличный здоровый баланс! Вам подойдут силовые тренировки, поддержание рельефа и функциональный тренинг в любом из 4 залов VM GYM.';
     } else if (bmi >= 25 && bmi < 29.9) {
       status = 'Избыточный вес';
-      advice = 'Рекомендуем сочетание силовых нагрузок и кардио-сессий в VM GYM для эффективного жиросжигания и рельефа.';
+      activeRowId = 'bmi-row-3';
+      advice = 'ИМТ находится в зоне избыточного веса. Рекомендуем интенсивные круговые и кардио-тренировки с тренером VM GYM для эффективного жиросжигания и сушки.';
     } else {
-      status = 'Высокий индекс массы';
-      advice = 'Рекомендуем персональные тренировки с наставником VM GYM и составление индивидуального плана питания.';
+      status = 'Высокий индекс';
+      activeRowId = 'bmi-row-4';
+      advice = 'Высокий показатель ИМТ. Рекомендуем персональные тренировки с опытным тренером VM GYM, контроль пульсовых зон и индивидуальную программу питания.';
     }
 
-    bmiValueElem.innerText = bmi;
-    bmiStatusElem.innerText = status;
-    bmiAdviceElem.innerText = advice;
+    // Подсветка активной строки
+    const activeRow = document.getElementById(activeRowId);
+    if (activeRow) {
+      activeRow.classList.remove('bg-[#151515]', 'border-transparent');
+      activeRow.classList.add('bg-white/10', 'border-white', 'shadow-lg');
+    }
 
-    resultBox.classList.remove('hidden');
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (bmiValueElem) bmiValueElem.innerText = bmi;
+    if (bmiStatusElem) bmiStatusElem.innerText = status;
+    if (bmiAdviceElem) bmiAdviceElem.innerText = advice;
+
+    if (bmiBookBtn) {
+      bmiBookBtn.onclick = () => {
+        openBookingModal(
+          `Программа под ИМТ ${bmi} (${status})`,
+          `Запись на персональную тренировку в VM GYM под вашу цель`
+        );
+      };
+    }
+
+    if (resultBox) {
+      resultBox.classList.remove('hidden');
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
     showToast(`ИМТ рассчитан: ${bmi} (${status})`, 'success');
   });
 }

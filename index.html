@@ -762,81 +762,119 @@
   <!-- ==========================================
        КАЛЬКУЛЯТОР ИМТ (BMI CALCULATOR)
        ========================================== -->
-  <section id="bmi" class="py-24 bg-[#0A0A0A] border-b border-[#1A1A1A]">
+  <section id="bmi" class="py-24 bg-[#0A0A0A] border-b border-[#1A1A1A] relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
         <!-- Left: Status Table -->
-        <div class="lg:col-span-6 behance-card p-8 rounded">
-          <h3 class="font-oswald font-bold text-2xl tracking-[0.15em] uppercase text-white mb-6 border-b border-[#222222] pb-4">
-            ТАБЛИЦА СТАНДАРТОВ ИМТ
-          </h3>
+        <div class="lg:col-span-5 behance-card p-8 rounded">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-[#222222]">
+            <h3 class="font-oswald font-bold text-2xl tracking-[0.15em] uppercase text-white">
+              СТАНДАРТЫ ИМТ
+            </h3>
+            <span class="text-xs font-oswald text-neutral-500 uppercase tracking-widest">ВОЗ</span>
+          </div>
           
-          <div class="space-y-3 font-montserrat text-sm mb-6">
-            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
-              <span class="text-neutral-400">Менее 18.5</span>
-              <span class="font-bold text-white">Дефицит массы тела</span>
+          <div class="space-y-2 font-montserrat text-sm mb-6">
+            <div id="bmi-row-1" class="bmi-range-row flex justify-between items-center p-3 rounded bg-[#151515] border border-transparent transition-all">
+              <span class="text-neutral-400 font-medium">Менее 18.5</span>
+              <span class="font-bold text-white text-xs sm:text-sm">Дефицит массы</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
-              <span class="text-neutral-400">18.5 – 24.9</span>
-              <span class="font-bold text-white">Нормальный баланс</span>
+            <div id="bmi-row-2" class="bmi-range-row flex justify-between items-center p-3 rounded bg-[#151515] border border-transparent transition-all">
+              <span class="text-neutral-400 font-medium">18.5 – 24.9</span>
+              <span class="font-bold text-emerald-400 text-xs sm:text-sm">Нормальный баланс</span>
             </div>
-            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
-              <span class="text-neutral-400">25.0 – 29.9</span>
-              <span class="font-bold text-white">Избыточный вес</span>
+            <div id="bmi-row-3" class="bmi-range-row flex justify-between items-center p-3 rounded bg-[#151515] border border-transparent transition-all">
+              <span class="text-neutral-400 font-medium">25.0 – 29.9</span>
+              <span class="font-bold text-amber-400 text-xs sm:text-sm">Избыточный вес</span>
             </div>
-            <div class="flex justify-between py-2">
-              <span class="text-neutral-400">30.0 и выше</span>
-              <span class="font-bold text-white">Высокий индекс массы</span>
+            <div id="bmi-row-4" class="bmi-range-row flex justify-between items-center p-3 rounded bg-[#151515] border border-transparent transition-all">
+              <span class="text-neutral-400 font-medium">30.0 и выше</span>
+              <span class="font-bold text-red-400 text-xs sm:text-sm">Высокий индекс массы</span>
             </div>
           </div>
 
-          <div id="bmi-result-box" class="hidden p-4 bg-[#141414] border border-[#2A2A2A] rounded mt-4">
-            <div class="text-xs uppercase font-oswald tracking-widest text-[#888888]">Ваш показатель:</div>
-            <div class="flex items-baseline gap-3 my-1">
-              <span id="bmi-value" class="font-oswald font-bold text-4xl text-white">22.4</span>
-              <span id="bmi-status" class="text-sm font-bold text-white">Норма</span>
-            </div>
-            <p id="bmi-advice" class="text-xs text-neutral-400 font-montserrat mt-2 leading-relaxed"></p>
+          <div class="p-4 rounded bg-[#121212] border border-[#222222] text-xs text-neutral-400 font-montserrat leading-relaxed">
+            <i class="fa-solid fa-circle-info text-white mr-1.5"></i>
+            Индекс массы тела (ИМТ) — базовый ориентир для подбора оптимальной нагрузки, кардио и плана питания тренером VM GYM.
           </div>
         </div>
 
-        <!-- Right: Calculator Form -->
-        <div class="lg:col-span-6">
+        <!-- Right: Calculator Form & Result -->
+        <div class="lg:col-span-7 behance-card p-8 sm:p-10 rounded">
           <div class="text-left mb-6">
-            <h2 class="font-oswald font-bold text-4xl tracking-[0.15em] uppercase text-white mb-2">
+            <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-1">ОНЛАЙН РАСЧЁТ</span>
+            <h2 class="font-oswald font-bold text-3xl sm:text-4xl tracking-[0.15em] uppercase text-white mb-2">
               КАЛЬКУЛЯТОР ИМТ
             </h2>
-            <p class="text-neutral-400 text-sm font-montserrat">
-              Рассчитайте индекс массы тела для персональной программы в VM GYM
+            <p class="text-neutral-400 text-xs sm:text-sm font-montserrat">
+              Укажите ваши параметры, чтобы моментально узнать свой индекс и получить персональные рекомендации тренеров VM GYM
             </p>
           </div>
 
           <form id="bmi-form" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="number" id="bmi-height" required placeholder="Рост / см" 
-                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+              <div>
+                <label class="block text-[11px] font-oswald text-neutral-400 uppercase tracking-wider mb-1.5">Рост (см) *</label>
+                <input type="number" id="bmi-height" required min="100" max="250" placeholder="Например: 178" 
+                  class="w-full px-5 py-3.5 bg-[#121212] border border-[#222222] text-white placeholder-neutral-600 font-montserrat text-sm focus:outline-none focus:border-white rounded transition-colors">
+              </div>
               
-              <input type="number" id="bmi-weight" required placeholder="Вес / кг" 
-                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+              <div>
+                <label class="block text-[11px] font-oswald text-neutral-400 uppercase tracking-wider mb-1.5">Вес (кг) *</label>
+                <input type="number" id="bmi-weight" required min="30" max="300" step="0.1" placeholder="Например: 75" 
+                  class="w-full px-5 py-3.5 bg-[#121212] border border-[#222222] text-white placeholder-neutral-600 font-montserrat text-sm focus:outline-none focus:border-white rounded transition-colors">
+              </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="number" id="bmi-age" placeholder="Возраст" 
-                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+              <div>
+                <label class="block text-[11px] font-oswald text-neutral-400 uppercase tracking-wider mb-1.5">Возраст</label>
+                <input type="number" id="bmi-age" min="12" max="100" placeholder="Например: 25" 
+                  class="w-full px-5 py-3.5 bg-[#121212] border border-[#222222] text-white placeholder-neutral-600 font-montserrat text-sm focus:outline-none focus:border-white rounded transition-colors">
+              </div>
               
-              <select id="bmi-goal" class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white font-montserrat text-sm focus:outline-none focus:border-white">
-                <option value="fatburn">Снижение веса / Рельеф</option>
-                <option value="muscle">Набор мышечной массы</option>
-                <option value="strength">Пауэрлифтинг / Сила</option>
-              </select>
+              <div>
+                <label class="block text-[11px] font-oswald text-neutral-400 uppercase tracking-wider mb-1.5">Цель тренировок</label>
+                <select id="bmi-goal" class="w-full px-5 py-3.5 bg-[#121212] border border-[#222222] text-white font-montserrat text-sm focus:outline-none focus:border-white rounded transition-colors">
+                  <option value="fatburn">Снижение веса / Рельеф</option>
+                  <option value="muscle">Набор мышечной массы</option>
+                  <option value="strength">Пауэрлифтинг / Сила</option>
+                  <option value="tone">Поддержание тонуса и здоровья</option>
+                </select>
+              </div>
             </div>
 
-            <button type="submit" class="btn-behance-white w-full py-4 mt-2">
-              РАССЧИТАТЬ
+            <button type="submit" class="btn-behance-white w-full py-4 mt-2 font-oswald font-bold tracking-widest text-sm flex items-center justify-center gap-2">
+              <i class="fa-solid fa-calculator"></i>
+              <span>РАССЧИТАТЬ ИМТ</span>
             </button>
           </form>
+
+          <!-- Блок результатов расчета -->
+          <div id="bmi-result-box" class="hidden mt-6 p-6 bg-[#161616] border border-white/40 rounded shadow-2xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#282828]">
+              <div>
+                <span class="text-[11px] uppercase font-oswald tracking-[0.2em] text-neutral-400">Ваш результат ИМТ:</span>
+                <div class="flex items-baseline gap-3 mt-1">
+                  <span id="bmi-value" class="font-oswald font-bold text-4xl sm:text-5xl text-white">22.4</span>
+                  <span id="bmi-status" class="text-sm sm:text-base font-oswald font-bold px-3 py-1 rounded bg-white text-black tracking-wider uppercase">Норма</span>
+                </div>
+              </div>
+              <div id="bmi-badge-target" class="text-xs font-montserrat text-neutral-400 sm:text-right">
+                Оптимальный диапазон: <strong class="text-white">18.5 – 24.9</strong>
+              </div>
+            </div>
+            
+            <p id="bmi-advice" class="text-xs sm:text-sm text-neutral-300 font-montserrat mt-4 leading-relaxed"></p>
+
+            <button id="bmi-book-btn" class="w-full mt-4 py-3 bg-white hover:bg-neutral-200 text-black font-oswald font-bold text-xs uppercase tracking-widest rounded transition-all flex items-center justify-center gap-2">
+              <span>ПОДОБРАТЬ ПРОГРАММУ С ТРЕНЕРОМ VM GYM</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+
         </div>
 
       </div>
