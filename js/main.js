@@ -29,23 +29,40 @@ function initNavbar() {
 
   // Мобильное меню
   if (mobileToggle && mobileMenu) {
+    const icon = mobileToggle.querySelector('i');
+
+    const openMenu = () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (icon) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      }
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (icon) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    };
+
     mobileToggle.addEventListener('click', () => {
       const isOpen = !mobileMenu.classList.contains('hidden');
       if (isOpen) {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = '';
+        closeMenu();
       } else {
-        mobileMenu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
+        openMenu();
       }
     });
 
     mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
+
+    window.closeMobileMenu = closeMenu;
   }
 }
 

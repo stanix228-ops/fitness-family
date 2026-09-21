@@ -89,38 +89,38 @@
       </div>
 
       <!-- Кнопка мобильного меню -->
-      <button id="mobile-menu-toggle" class="lg:hidden text-white text-xl p-2">
-        <i class="fa-solid fa-bars"></i>
+      <button id="mobile-menu-toggle" aria-label="Меню" class="lg:hidden text-white text-xl p-2 flex items-center justify-center focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
       </button>
 
     </div>
-
-    <!-- Мобильное меню -->
-    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-[#080808] z-50 p-6 flex flex-col justify-between border-t border-[#222222]">
-      <nav class="flex flex-col gap-5 font-oswald text-xl tracking-[0.2em]">
-        <a href="#hero" class="mobile-nav-link text-white">ГЛАВНАЯ</a>
-        <a href="#branches" class="mobile-nav-link text-neutral-400 hover:text-white">ФИЛИАЛЫ</a>
-        <a href="#about" class="mobile-nav-link text-neutral-400 hover:text-white">О СЕТИ</a>
-        <a href="#programs" class="mobile-nav-link text-neutral-400 hover:text-white">НАПРАВЛЕНИЯ</a>
-        <a href="#pricing" class="mobile-nav-link text-neutral-400 hover:text-white">ТАРИФЫ</a>
-        <a href="#coaches" class="mobile-nav-link text-neutral-400 hover:text-white">ТРЕНЕРЫ</a>
-        <a href="#bmi" class="mobile-nav-link text-neutral-400 hover:text-white">КАЛЬКУЛЯТОР ИМТ</a>
-        <a href="#contact" class="mobile-nav-link text-neutral-400 hover:text-white">КОНТАКТЫ</a>
-      </nav>
-      <div class="pt-6 border-t border-[#222222] flex flex-col gap-3">
-        <a href="https://wa.me/77714853539" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
-          <i class="fa-brands fa-whatsapp text-white text-lg"></i> НАПИСАТЬ В WHATSAPP
-        </a>
-        <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
-          <i class="fa-brands fa-instagram text-white text-lg"></i> INSTAGRAM @VMGYMKZ
-        </a>
-        <button onclick="openBookingModal('Пробная тренировка', 'Запишитесь на первое занятие'); document.getElementById('mobile-menu').classList.add('hidden');" 
-          class="btn-behance-white w-full py-3.5 text-center">
-          КУПИТЬ АБОНЕМЕНТ
-        </button>
-      </div>
-    </div>
   </header>
+
+  <!-- Мобильное полноэкранное меню (100% непрозрачное) -->
+  <div id="mobile-menu" class="hidden fixed inset-x-0 top-20 bottom-0 bg-[#080808] z-50 p-6 flex flex-col justify-between overflow-y-auto border-t border-[#222222]">
+    <nav class="flex flex-col gap-5 font-oswald text-xl tracking-[0.2em] pt-2">
+      <a href="#hero" class="mobile-nav-link text-white py-1">ГЛАВНАЯ</a>
+      <a href="#branches" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ФИЛИАЛЫ</a>
+      <a href="#about" class="mobile-nav-link text-neutral-400 hover:text-white py-1">О СЕТИ</a>
+      <a href="#programs" class="mobile-nav-link text-neutral-400 hover:text-white py-1">НАПРАВЛЕНИЯ</a>
+      <a href="#pricing" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ТАРИФЫ</a>
+      <a href="#coaches" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ТРЕНЕРЫ</a>
+      <a href="#bmi" class="mobile-nav-link text-neutral-400 hover:text-white py-1">КАЛЬКУЛЯТОР ИМТ</a>
+      <a href="#contact" class="mobile-nav-link text-neutral-400 hover:text-white py-1">КОНТАКТЫ</a>
+    </nav>
+    <div class="pt-6 mt-6 border-t border-[#222222] flex flex-col gap-3 shrink-0">
+      <a href="https://wa.me/77714853539" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
+        <i class="fa-brands fa-whatsapp text-white text-lg"></i> НАПИСАТЬ В WHATSAPP
+      </a>
+      <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
+        <i class="fa-brands fa-instagram text-white text-lg"></i> INSTAGRAM @VMGYMKZ
+      </a>
+      <button onclick="if(window.closeMobileMenu) window.closeMobileMenu(); openBookingModal('Пробная тренировка в VM GYM', 'Запишитесь на первое занятие');" 
+        class="btn-behance-white w-full py-3.5 text-center">
+        КУПИТЬ АБОНЕМЕНТ
+      </button>
+    </div>
+  </div>
 
   <!-- ==========================================
        HERO SECTION (BEHANCE STYLE + VM GYM KZ)

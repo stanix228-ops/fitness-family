@@ -525,17 +525,96 @@ function initCoachesCarousel() {
   });
 
   track.addEventListener('mouseleave', () => {
-    isCarouselPaused = false;
+    if (!isPointerDown) isCarouselPaused = false;
   });
 
+  // Touch & Mouse Drag Engine for smooth mobile & desktop dragging
+  let isPointerDown = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
+  let hasDragged = false;
+
   // Touch handlers for mobile
-  track.addEventListener('touchstart', () => {
+  track.addEventListener('touchstart', (e) => {
     isCarouselPaused = true;
+    isPointerDown = true;
+    hasDragged = false;
+    startX = e.touches[0].pageX - track.offsetLeft;
+    scrollLeftStart = track.scrollLeft;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isPointerDown) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = (x - startX);
+    if (Math.abs(walk) > 4) {
+      hasDragged = true;
+    }
+    track.scrollLeft = scrollLeftStart - walk;
+
+    const halfWidth = track.scrollWidth / 2;
+    if (track.scrollLeft >= halfWidth) {
+      track.scrollLeft -= halfWidth;
+      scrollLeftStart -= halfWidth;
+    } else if (track.scrollLeft <= 0) {
+      track.scrollLeft += halfWidth;
+      scrollLeftStart += halfWidth;
+    }
   }, { passive: true });
 
   track.addEventListener('touchend', () => {
-    pauseAutoscroll(2500);
+    isPointerDown = false;
+    pauseAutoscroll(3000);
   });
+
+  track.addEventListener('touchcancel', () => {
+    isPointerDown = false;
+    pauseAutoscroll(2000);
+  });
+
+  // Mouse Drag handlers
+  track.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    isCarouselPaused = true;
+    isPointerDown = true;
+    hasDragged = false;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeftStart = track.scrollLeft;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isPointerDown) return;
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX);
+    if (Math.abs(walk) > 4) {
+      hasDragged = true;
+    }
+    track.scrollLeft = scrollLeftStart - walk;
+
+    const halfWidth = track.scrollWidth / 2;
+    if (track.scrollLeft >= halfWidth) {
+      track.scrollLeft -= halfWidth;
+      scrollLeftStart -= halfWidth;
+    } else if (track.scrollLeft <= 0) {
+      track.scrollLeft += halfWidth;
+      scrollLeftStart += halfWidth;
+    }
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isPointerDown) {
+      isPointerDown = false;
+      pauseAutoscroll(3000);
+    }
+  });
+
+  // Prevent link click when user is dragging
+  track.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
 
   // Mouse wheel horizontal scroll support
   track.addEventListener('wheel', (e) => {
