@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VM GYM | Сеть тренажёрных залов в Петропавловске (@vmgymkz)</title>
+  <meta name="description" content="VM GYM (@vmgymkz) — ведущая сеть тренажёрных залов в Петропавловске. 4 филиала по городу, профессиональные тренеры, силовые и кардио-зоны, подготовка к соревнованиям.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FFFFFF',
+            accent: '#CCFF00',
+            darkBg: '#050505',
+            darkCard: '#0E0E0E',
+            darkBorder: '#222222',
+          },
+          fontFamily: {
+            oswald: ['Oswald', 'sans-serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-[#050505] text-white selection:bg-white selection:text-black">
+
+  <!-- ==========================================
+       ГЛАВНЫЙ HEADER С НАВИГАЦИЕЙ (BEHANCE STYLE)
+       ========================================== -->
+  <header id="main-header" class="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur-md border-b border-[#1A1A1A] transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Логотип VM GYM -->
+      <a href="#hero" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded bg-white text-black flex items-center justify-center font-oswald font-black text-lg tracking-tighter">
+          VM
+        </div>
+        <div class="flex flex-col">
+          <span class="font-oswald font-bold text-2xl tracking-[0.15em] text-white leading-none">VM <span class="text-neutral-400">GYM</span></span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-neutral-500 font-montserrat font-bold mt-1">ПЕТРОПАВЛОВСК</span>
+        </div>
+      </a>
+
+      <!-- Меню сайта (в одну линию без переносов) -->
+      <nav class="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7 font-oswald font-semibold text-xs xl:text-sm tracking-[0.1em] xl:tracking-[0.15em] text-[#A0A0A0] whitespace-nowrap shrink-0">
+        <a href="#hero" class="text-white hover:text-white transition-colors whitespace-nowrap">ГЛАВНАЯ</a>
+        <a href="#branches" class="hover:text-white transition-colors whitespace-nowrap">ФИЛИАЛЫ</a>
+        <a href="#about" class="hover:text-white transition-colors whitespace-nowrap">О СЕТИ</a>
+        <a href="#programs" class="hover:text-white transition-colors whitespace-nowrap">НАПРАВЛЕНИЯ</a>
+        <a href="#pricing" class="hover:text-white transition-colors whitespace-nowrap">ТАРИФЫ</a>
+        <a href="#coaches" class="hover:text-white transition-colors whitespace-nowrap">ТРЕНЕРЫ</a>
+        <a href="#bmi" class="hover:text-white transition-colors whitespace-nowrap">ИМТ</a>
+        <a href="#contact" class="hover:text-white transition-colors whitespace-nowrap">КОНТАКТЫ</a>
+      </nav>
+
+      <!-- Быстрые действия: Белые линейные значки без обводки + Кнопка -->
+      <div class="hidden sm:flex items-center gap-3 xl:gap-5 shrink-0">
+        <!-- Значок Instagram (чисто белые линии) -->
+        <a href="https://www.instagram.com/vmgymkz/" target="_blank" title="Instagram @vmgymkz" 
+          class="flex items-center justify-center text-white hover:text-neutral-400 transition-colors text-lg p-1.5">
+          <i class="fa-brands fa-instagram text-xl text-white"></i>
+        </a>
+
+        <!-- Значок WhatsApp (чисто белые линии без обводки) -->
+        <a href="https://wa.me/77714853539" target="_blank" title="WhatsApp +7 (771) 485-35-39" 
+          class="flex items-center gap-2 text-white hover:text-neutral-400 transition-colors font-oswald text-xs font-bold tracking-wider p-1.5">
+          <i class="fa-brands fa-whatsapp text-xl text-white"></i>
+          <span class="hidden xl:inline text-white">WHATSAPP</span>
+        </a>
+
+        <!-- Кнопка Абонемент -->
+        <button onclick="openBookingModal('Пробная тренировка в VM GYM', 'Запишитесь на первое занятие со скидкой')" 
+          class="btn-behance-white text-xs py-2.5 px-5 xl:px-6 whitespace-nowrap">
+          АБОНЕМЕНТ
+        </button>
+      </div>
+
+      <!-- Кнопка мобильного меню -->
+      <button id="mobile-menu-toggle" class="lg:hidden text-white text-xl p-2">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+
+    <!-- Мобильное меню -->
+    <div id="mobile-menu" class="hidden fixed inset-0 top-20 bg-[#080808] z-50 p-6 flex flex-col justify-between border-t border-[#222222]">
+      <nav class="flex flex-col gap-5 font-oswald text-xl tracking-[0.2em]">
+        <a href="#hero" class="mobile-nav-link text-white">ГЛАВНАЯ</a>
+        <a href="#branches" class="mobile-nav-link text-neutral-400 hover:text-white">ФИЛИАЛЫ</a>
+        <a href="#about" class="mobile-nav-link text-neutral-400 hover:text-white">О СЕТИ</a>
+        <a href="#programs" class="mobile-nav-link text-neutral-400 hover:text-white">НАПРАВЛЕНИЯ</a>
+        <a href="#pricing" class="mobile-nav-link text-neutral-400 hover:text-white">ТАРИФЫ</a>
+        <a href="#coaches" class="mobile-nav-link text-neutral-400 hover:text-white">ТРЕНЕРЫ</a>
+        <a href="#bmi" class="mobile-nav-link text-neutral-400 hover:text-white">КАЛЬКУЛЯТОР ИМТ</a>
+        <a href="#contact" class="mobile-nav-link text-neutral-400 hover:text-white">КОНТАКТЫ</a>
+      </nav>
+      <div class="pt-6 border-t border-[#222222] flex flex-col gap-3">
+        <a href="https://wa.me/77714853539" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-white text-lg"></i> НАПИСАТЬ В WHATSAPP
+        </a>
+        <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="btn-behance-outline w-full py-3.5 text-center flex items-center justify-center gap-2">
+          <i class="fa-brands fa-instagram text-white text-lg"></i> INSTAGRAM @VMGYMKZ
+        </a>
+        <button onclick="openBookingModal('Пробная тренировка', 'Запишитесь на первое занятие'); document.getElementById('mobile-menu').classList.add('hidden');" 
+          class="btn-behance-white w-full py-3.5 text-center">
+          КУПИТЬ АБОНЕМЕНТ
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO SECTION (BEHANCE STYLE + VM GYM KZ)
+       ========================================== -->
+  <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-[#1A1A1A]">
+    
+    <!-- Фоновое изображение атлета -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+           alt="VM GYM Петропавловск" 
+           class="w-full h-full object-cover object-center filter brightness-[0.32] contrast-125">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent"></div>
+    </div>
+
+    <!-- Контурный фоновый текст -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+      <span class="outline-text text-7xl sm:text-9xl lg:text-[14rem] opacity-20 tracking-widest font-black">
+        VM GYM
+      </span>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center flex flex-col items-center py-20">
+      
+      <span class="text-xs uppercase font-oswald tracking-[0.35em] text-neutral-400 mb-4 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        СЕТЬ ТРЕНАЖЁРНЫХ ЗАЛОВ • ПЕТРОПАВЛОВСК
+      </span>
+
+      <!-- Главный слоган -->
+      <h1 class="font-oswald font-bold text-5xl sm:text-7xl lg:text-8xl tracking-[0.08em] uppercase leading-[1] mb-6 text-white">
+        ДЕРЖИ ТЕЛО <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-400">В ТОНУСЕ И СИЛЕ</span>
+      </h1>
+
+      <p class="text-neutral-400 text-sm sm:text-base max-w-xl mx-auto font-montserrat font-light leading-relaxed mb-10">
+        4 филиала в удобных районах города. Профессиональные тренажеры, опытные наставники, сильная атмосфера и реальный прогресс с первой тренировки.
+      </p>
+
+      <!-- Кнопки действий -->
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <button onclick="openBookingModal('Запись на тренировку в VM GYM', 'Оставьте заявку и получите персональную консультацию тренера')" 
+          class="btn-behance-white">
+          <span>НАЧАТЬ ТРЕНИРОВКИ</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+        <a href="#branches" class="btn-behance-outline">
+          <span>ВЫБРАТЬ ФИЛИАЛ</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ФИЛИАЛЫ VM GYM В ПЕТРОПАВЛОВСКЕ (BRANCHES)
+       ========================================== -->
+  <section id="branches" class="py-24 bg-[#0A0A0A] border-b border-[#1A1A1A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-2">ЛОКАЦИИ ПО ГОРОДУ</span>
+        <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-4">
+          4 ФИЛИАЛА В ПЕТРОПАВЛОВСКЕ
+        </h2>
+        <p class="text-neutral-400 text-sm font-montserrat max-w-xl mx-auto">
+          Тренируйтесь рядом с домом или работой в любом из 4 залов сети VM GYM
+        </p>
+      </div>
+
+      <!-- Сетка 4 филиалов с актуальным графиком -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Филиал 1: Сутюшева 55 (24/7) -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group border-white/40">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-widest text-neutral-400 font-oswald">ФИЛИАЛ 1</span>
+              <span class="px-2 py-0.5 rounded bg-white text-black text-[10px] font-oswald font-bold tracking-wider">24/7 КРУГЛОСУТОЧНО</span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white mb-2">ул. Карима Сутюшева, 55</h3>
+            <p class="text-xs text-neutral-400 font-montserrat mb-4">Большой зал свободного веса, кардио-зона, профессиональный тренерский состав.</p>
+          </div>
+          <div class="pt-4 border-t border-[#222222] space-y-3">
+            <div class="text-xs text-neutral-300 font-montserrat">
+              <div class="text-[11px] text-neutral-500 uppercase font-oswald tracking-wider">График работы:</div>
+              <div class="font-semibold text-white">Пн–Сб: Круглосуточно (24/7)</div>
+              <div class="text-neutral-400">Вс: с 09:00 (Круглосуточно)</div>
+            </div>
+            <div class="text-xs text-neutral-400 font-montserrat flex items-center gap-2">
+              <i class="fa-solid fa-phone text-neutral-400 text-[10px]"></i> +7 (771) 485-35-39
+            </div>
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM%20Сутюшева%2055" target="_blank" 
+              class="w-full py-2.5 bg-[#171717] hover:bg-white hover:text-black text-neutral-300 font-oswald text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-map-location-dot"></i> НА КАРТЕ 2GIS
+            </a>
+          </div>
+        </div>
+
+        <!-- Филиал 2: Назарбаева 218 (до 00:00) -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-widest text-neutral-500 font-oswald">ФИЛИАЛ 2</span>
+              <span class="px-2 py-0.5 rounded bg-[#1C1C1C] border border-[#333333] text-white text-[10px] font-oswald font-bold tracking-wider">ДО 00:00</span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white mb-2">ул. Н. Назарбаева, 218</h3>
+            <p class="text-xs text-neutral-400 font-montserrat mb-4">Удобная локация, расширенная гантельная линия, персональные тренировки и консультации.</p>
+          </div>
+          <div class="pt-4 border-t border-[#222222] space-y-3">
+            <div class="text-xs text-neutral-300 font-montserrat">
+              <div class="text-[11px] text-neutral-500 uppercase font-oswald tracking-wider">График работы:</div>
+              <div class="font-semibold text-white">Пн–Сб: 07:00 – 00:00</div>
+              <div class="text-neutral-400">Вс: 09:00 – 00:00</div>
+            </div>
+            <div class="text-xs text-neutral-400 font-montserrat flex items-center gap-2">
+              <i class="fa-solid fa-phone text-neutral-400 text-[10px]"></i> +7 (771) 485-35-39
+            </div>
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM%20Назарбаева%20218" target="_blank" 
+              class="w-full py-2.5 bg-[#171717] hover:bg-white hover:text-black text-neutral-300 font-oswald text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-map-location-dot"></i> НА КАРТЕ 2GIS
+            </a>
+          </div>
+        </div>
+
+        <!-- Филиал 3: Шухова 14 (до 23:00) -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-widest text-neutral-500 font-oswald">ФИЛИАЛ 3</span>
+              <span class="px-2 py-0.5 rounded bg-[#1C1C1C] border border-[#333333] text-white text-[10px] font-oswald font-bold tracking-wider">ДО 23:00</span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white mb-2">ул. И.П. Шухова, 14</h3>
+            <p class="text-xs text-neutral-400 font-montserrat mb-4">Комфортная атмосфера, силовые рамы для приседаний и жимов, дружелюбное комьюнити.</p>
+          </div>
+          <div class="pt-4 border-t border-[#222222] space-y-3">
+            <div class="text-xs text-neutral-300 font-montserrat">
+              <div class="text-[11px] text-neutral-500 uppercase font-oswald tracking-wider">График работы:</div>
+              <div class="font-semibold text-white">Пн–Сб: 07:00 – 23:00</div>
+              <div class="text-neutral-400">Вс: 09:00 – 23:00</div>
+            </div>
+            <div class="text-xs text-neutral-400 font-montserrat flex items-center gap-2">
+              <i class="fa-solid fa-phone text-neutral-400 text-[10px]"></i> +7 (771) 485-35-39
+            </div>
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM%20Шухова%2014" target="_blank" 
+              class="w-full py-2.5 bg-[#171717] hover:bg-white hover:text-black text-neutral-300 font-oswald text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-map-location-dot"></i> НА КАРТЕ 2GIS
+            </a>
+          </div>
+        </div>
+
+        <!-- Филиал 4: Е. Казахстана 46 (до 22:00) -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-widest text-neutral-500 font-oswald">ФИЛИАЛ 4</span>
+              <span class="px-2 py-0.5 rounded bg-[#1C1C1C] border border-[#333333] text-white text-[10px] font-oswald font-bold tracking-wider">ДО 22:00</span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white mb-2">ул. Е. Казахстана, 46</h3>
+            <p class="text-xs text-neutral-400 font-montserrat mb-4">Просторный силовой зал, функциональный тренинг, блочные тренажеры нового поколения.</p>
+          </div>
+          <div class="pt-4 border-t border-[#222222] space-y-3">
+            <div class="text-xs text-neutral-300 font-montserrat">
+              <div class="text-[11px] text-neutral-500 uppercase font-oswald tracking-wider">График работы:</div>
+              <div class="font-semibold text-white">Пн–Сб: 07:00 – 22:00</div>
+              <div class="text-neutral-400">Вс: 09:00 – 22:00</div>
+            </div>
+            <div class="text-xs text-neutral-400 font-montserrat flex items-center gap-2">
+              <i class="fa-solid fa-phone text-neutral-400 text-[10px]"></i> +7 (771) 485-35-39
+            </div>
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM%20Е.%20Казахстана%2046" target="_blank" 
+              class="w-full py-2.5 bg-[#171717] hover:bg-white hover:text-black text-neutral-300 font-oswald text-xs font-bold tracking-wider uppercase transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-map-location-dot"></i> НА КАРТЕ 2GIS
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       QUOTE & PHILOSOPHY BANNER
+       ========================================== -->
+  <section class="py-20 bg-[#050505] border-b border-[#1A1A1A] relative">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="text-neutral-600 text-4xl mb-4 font-serif">“</div>
+      <p class="font-montserrat font-medium text-lg sm:text-xl text-neutral-200 leading-relaxed max-w-3xl mx-auto">
+        Хотите быть здоровым, сильным и иметь идеальное тело? <strong class="text-white">VM GYM</strong> — это правильное решение для вас! Мы поможем выстроить персональную программу тренировок и сбалансировать питание, чтобы вы достигли максимального результата!
+      </p>
+      <div class="text-neutral-600 text-4xl mt-4 font-serif">”</div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4 НАПРАВЛЕНИЯ ТРЕНИРОВОК (BEHANCE 4 CARDS)
+       ========================================== -->
+  <section id="programs" class="py-20 bg-[#080808] border-b border-[#1A1A1A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Program 1: FITNESS -->
+        <div class="relative h-[480px] behance-card overflow-hidden group cursor-pointer" onclick="openBookingModal('Программа: Фитнес', 'Запись на направление Фитнес в VM GYM')">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1000&auto=format&fit=crop" 
+               alt="FITNESS" 
+               class="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 program-overlay"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-center">
+            <h3 class="font-oswald font-bold text-3xl tracking-[0.15em] text-white group-hover:text-white transition-colors">
+              ФИТНЕС
+            </h3>
+            <p class="text-neutral-400 text-xs mt-2 uppercase tracking-wider font-oswald opacity-0 group-hover:opacity-100 transition-opacity">
+              Тонус • Подтянутость • Здоровье
+            </p>
+          </div>
+        </div>
+
+        <!-- Program 2: BODYBUILDING -->
+        <div class="relative h-[480px] behance-card overflow-hidden group cursor-pointer" onclick="openBookingModal('Программа: Бодибилдинг', 'Запись на направление Бодибилдинг в VM GYM')">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000&auto=format&fit=crop" 
+               alt="BODYBUILDING" 
+               class="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 program-overlay"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-center">
+            <h3 class="font-oswald font-bold text-3xl tracking-[0.15em] text-white group-hover:text-white transition-colors">
+              БОДИБИЛДИНГ
+            </h3>
+            <p class="text-neutral-400 text-xs mt-2 uppercase tracking-wider font-oswald opacity-0 group-hover:opacity-100 transition-opacity">
+              Мышечная масса • Рельеф • Сила
+            </p>
+          </div>
+        </div>
+
+        <!-- Program 3: CROSSFIT -->
+        <div class="relative h-[480px] behance-card overflow-hidden group cursor-pointer" onclick="openBookingModal('Программа: Пауэрлифтинг', 'Запись на Пауэрлифтинг и Силовой тренинг')">
+          <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop" 
+               alt="POWERLIFTING" 
+               class="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 program-overlay"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-center">
+            <h3 class="font-oswald font-bold text-3xl tracking-[0.15em] text-white group-hover:text-white transition-colors">
+              ПАУЭРЛИФТИНГ
+            </h3>
+            <p class="text-neutral-400 text-xs mt-2 uppercase tracking-wider font-oswald opacity-0 group-hover:opacity-100 transition-opacity">
+              Жим лёжа • Присед • Становая
+            </p>
+          </div>
+        </div>
+
+        <!-- Program 4: CARDIO -->
+        <div class="relative h-[480px] behance-card overflow-hidden group cursor-pointer" onclick="openBookingModal('Программа: Кардио', 'Запись на Кардио и функциональный тренинг')">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop" 
+               alt="CARDIO" 
+               class="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 program-overlay"></div>
+          <div class="absolute bottom-6 left-6 right-6 text-center">
+            <h3 class="font-oswald font-bold text-3xl tracking-[0.15em] text-white group-hover:text-white transition-colors">
+              КАРДИО
+            </h3>
+            <p class="text-neutral-400 text-xs mt-2 uppercase tracking-wider font-oswald opacity-0 group-hover:opacity-100 transition-opacity">
+              Выносливость • Жиросжигание • Сердце
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       О СЕТИ VM GYM (WHO WE ARE)
+       ========================================== -->
+  <section id="about" class="py-24 bg-[#050505] border-b border-[#1A1A1A] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-4">
+        О СЕТИ VM GYM
+      </h2>
+      <p class="text-neutral-400 text-sm max-w-2xl mx-auto font-montserrat font-light leading-relaxed mb-12">
+        Сеть тренажерных залов VM GYM — это флагман силового спорта и здорового образа жизни в Петропавловске. Мы организуем городские турниры, развиваем спорт и создаем комфортную среду для каждого атлета.
+      </p>
+
+      <!-- 2 Side-by-side Athlete Photos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+        <div class="h-80 sm:h-96 rounded overflow-hidden border border-[#222222]">
+          <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1000&auto=format&fit=crop" 
+               alt="VM GYM Зал 1" 
+               class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+        </div>
+        <div class="h-80 sm:h-96 rounded overflow-hidden border border-[#222222]">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1000&auto=format&fit=crop" 
+               alt="VM GYM Зал 2" 
+               class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+        </div>
+      </div>
+
+      <button onclick="openBookingModal('Бесплатная консультация', 'Получите консультацию тренера в WhatsApp')" 
+        class="btn-behance-outline">
+        БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ПОЧЕМУ ВЫБИРАЮТ НАС (BENTO GRID - КЛЮЧЕВЫЕ ПРЕИМУЩЕСТВА)
+       ========================================== -->
+  <section class="py-24 bg-[#0A0A0A] border-b border-[#1A1A1A] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-2">ПРЕИМУЩЕСТВА СЕТИ</span>
+        <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-4">
+          ПОЧЕМУ ВЫБИРАЮТ VM GYM
+        </h2>
+        <p class="text-neutral-400 text-sm max-w-xl mx-auto font-montserrat font-light leading-relaxed">
+          Главные факты и стандарты сети тренажёрных залов VM GYM в Петропавловске
+        </p>
+      </div>
+
+      <!-- BENTO GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-14">
+        
+        <!-- CARD 1: 4 ФИЛИАЛА — 1 АБОНЕМЕНТ (2 КОЛОНКИ) -->
+        <div class="behance-card p-8 rounded lg:col-span-2 flex flex-col justify-between relative overflow-hidden group">
+          <div class="absolute -right-6 -bottom-6 text-9xl text-white/[0.03] font-oswald font-bold pointer-events-none select-none">
+            04
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded bg-white/10 border border-white/20 text-white font-oswald text-[11px] font-bold tracking-widest uppercase">
+                ЕДИНЫЙ ДОСТУП
+              </span>
+              <i class="fa-solid fa-layer-group text-2xl text-neutral-500 group-hover:text-white transition-colors"></i>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide uppercase mb-3">
+              4 ФИЛИАЛА — 1 АБОНЕМЕНТ
+            </h3>
+            <p class="text-neutral-400 text-sm font-montserrat leading-relaxed max-w-xl mb-6">
+              Один абонемент открывает двери во все залы сети. Занимайтесь рядом с домом, работой или там, где вам удобно сегодня.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-[#222222]">
+            <div class="p-2.5 rounded bg-[#161616] text-center border border-[#222222]/50">
+              <span class="block text-[10px] text-neutral-500 font-oswald uppercase">ФИЛИАЛ 1</span>
+              <span class="text-xs font-semibold text-white">Сутюшева, 55</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#161616] text-center border border-[#222222]/50">
+              <span class="block text-[10px] text-neutral-500 font-oswald uppercase">ФИЛИАЛ 2</span>
+              <span class="text-xs font-semibold text-white">Назарбаева, 218</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#161616] text-center border border-[#222222]/50">
+              <span class="block text-[10px] text-neutral-500 font-oswald uppercase">ФИЛИАЛ 3</span>
+              <span class="text-xs font-semibold text-white">Шухова, 14</span>
+            </div>
+            <div class="p-2.5 rounded bg-[#161616] text-center border border-[#222222]/50">
+              <span class="block text-[10px] text-neutral-500 font-oswald uppercase">ФИЛИАЛ 4</span>
+              <span class="text-xs font-semibold text-white">Е.Казахстана, 46</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: БЕЗЛИМИТ НА 30 ДНЕЙ ЗА 12K (ХИТ ПРОДАЖ) -->
+        <div class="behance-card p-8 rounded lg:col-span-1 flex flex-col justify-between bg-gradient-to-b from-[#181818] to-[#101010] border-white/40 relative overflow-hidden group shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded bg-white text-black font-oswald text-[11px] font-bold tracking-widest uppercase">
+              🔥 ХИТ ПРОДАЖ
+            </span>
+            <i class="fa-solid fa-fire text-2xl text-white"></i>
+          </div>
+          <div>
+            <span class="text-xs uppercase tracking-[0.2em] text-neutral-400 font-oswald block mb-1">ФЛАГМАНСКИЙ ТАРИФ</span>
+            <div class="font-oswald font-bold text-4xl sm:text-5xl text-white mb-2">12 000 ₸</div>
+            <h4 class="font-oswald font-semibold text-lg text-white uppercase tracking-wider mb-2">БЕЗЛИМИТ НА 30 ДНЕЙ</h4>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-6">
+              Полный безлимит на 30 дней без скрытых условий и ограничений по времени посещения во всех залах сети.
+            </p>
+          </div>
+          <button onclick="openBookingModal('Тариф NO LIMITED (12 000 ₸)', 'Оформление флагманского безлимита на 30 дней')" 
+            class="btn-behance-white w-full text-xs py-2.5">
+            КУПИТЬ АБОНЕМЕНТ
+          </button>
+        </div>
+
+        <!-- CARD 3: 2000+ АТЛЕТОВ (КОМЬЮНИТИ) -->
+        <div class="behance-card p-8 rounded flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-0.5 rounded bg-white/5 border border-white/10 text-neutral-400 font-oswald text-[11px] uppercase tracking-wider">КОМЬЮНИТИ</span>
+            <i class="fa-solid fa-users text-2xl text-neutral-500 group-hover:text-white transition-colors"></i>
+          </div>
+          <div>
+            <div class="font-oswald font-bold text-5xl sm:text-6xl text-white mb-2 stat-counter" data-target="2000" data-suffix="+">2000+</div>
+            <h4 class="font-oswald font-bold text-lg text-white uppercase tracking-wider mb-2">АТЛЕТОВ УЖЕ В VM</h4>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed">
+              Более 2000 человек выбрали залы VM GYM для регулярных тренировок и достижения спортивных целей.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#222222] flex items-center gap-2 text-xs text-neutral-400 font-montserrat">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Сильное комьюнити
+          </div>
+        </div>
+
+        <!-- CARD 4: 45 ТРЕНЕРОВ (НАСТАВНИКИ) -->
+        <div class="behance-card p-8 rounded flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-0.5 rounded bg-white/5 border border-white/10 text-neutral-400 font-oswald text-[11px] uppercase tracking-wider">НАСТАВНИКИ</span>
+            <i class="fa-solid fa-medal text-2xl text-neutral-500 group-hover:text-white transition-colors"></i>
+          </div>
+          <div>
+            <div class="font-oswald font-bold text-5xl sm:text-6xl text-white mb-2 stat-counter" data-target="45">45</div>
+            <h4 class="font-oswald font-bold text-lg text-white uppercase tracking-wider mb-2">ТРЕНЕРОВ ПРОФЕССИОНАЛОВ</h4>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed">
+              Опытный тренерский штаб категорий Basic, PRO и TOP для персональных и групповых программ.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#222222] flex items-center gap-2 text-xs text-neutral-400 font-montserrat">
+            <i class="fa-solid fa-shield-halved text-white text-[10px]"></i> Индивидуальный подход
+          </div>
+        </div>
+
+        <!-- CARD 5: OPEN 24/7 (СУТЮШЕВА 55) -->
+        <div class="behance-card p-8 rounded flex flex-col justify-between group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-0.5 rounded bg-white text-black font-oswald text-[11px] font-bold uppercase tracking-wider">24/7</span>
+            <i class="fa-solid fa-clock text-2xl text-neutral-500 group-hover:text-white transition-colors"></i>
+          </div>
+          <div>
+            <div class="font-oswald font-bold text-4xl sm:text-5xl text-white mb-2 flex items-center gap-2">
+              OPEN 24/7
+            </div>
+            <h4 class="font-oswald font-bold text-lg text-white uppercase tracking-wider mb-2">ЗАЛ ПО СУТЮШЕВА, 55</h4>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed">
+              Круглосуточный режим работы. Тренируйтесь ранним утром, днем или глубокой ночью в любое удобное время.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#222222] flex items-center justify-between">
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM%20Сутюшева%2055" target="_blank" 
+              class="text-xs text-neutral-300 hover:text-white font-oswald font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors">
+              <span>НА КАРТЕ 2GIS</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+            <span class="text-[11px] text-emerald-400 font-montserrat flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Открыт сейчас
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center">
+        <a href="https://wa.me/77714853539" target="_blank" class="btn-behance-outline">
+          ЗАДАТЬ ВОПРОС В WHATSAPP
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ТАРИФЫ И АБОНЕМЕНТЫ (ОФИЦИАЛЬНЫЙ ПРАЙС VM GYM)
+       ========================================== -->
+  <section id="pricing" class="py-24 bg-[#050505] border-b border-[#1A1A1A] relative overflow-hidden">
+    
+    <!-- Giant Stroked Background Text -->
+    <div class="absolute top-8 left-1/2 transform -translate-x-1/2 pointer-events-none select-none">
+      <span class="outline-text text-6xl sm:text-8xl lg:text-9xl tracking-[0.2em] whitespace-nowrap opacity-15">
+        VM GYM PRICING
+      </span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-2">ОФИЦИАЛЬНЫЙ ПРАЙС-ЛИСТ</span>
+        <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-2">
+          ТАРИФЫ И АБОНЕМЕНТЫ
+        </h2>
+        <p class="text-neutral-400 text-sm font-montserrat">Выберите подходящий абонемент для посещения тренажёрных залов VM GYM</p>
+      </div>
+
+      <!-- 3 Главные карточки-хиты -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        
+        <!-- CARD 1: LIMITED (10 ТРЕНИРОВОК) -->
+        <div class="behance-card flex rounded overflow-hidden">
+          <div class="w-12 bg-[#141414] border-r border-[#222222] flex items-center justify-center py-6">
+            <span class="vertical-text font-oswald font-bold text-xs uppercase tracking-[0.3em] text-[#888888]">
+              LIMITED
+            </span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col justify-between">
+            <div class="text-center">
+              <div class="text-3xl text-white mb-4"><i class="fa-solid fa-dumbbell"></i></div>
+              <ul class="space-y-2.5 text-xs font-montserrat text-neutral-400 mb-6">
+                <li><strong class="text-white">10 тренировок</strong> в зале</li>
+                <li>Срок действия: <strong class="text-white">30 дней</strong></li>
+                <li>Тренажёрная и кардио-зоны</li>
+                <li>Шкафчик, душ, раздевалка</li>
+                <li>Вводный инструктаж тренера</li>
+              </ul>
+              <div class="font-oswald font-bold text-4xl text-white mb-1">10 000 ₸</div>
+              <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-6">30 Дней (10 тренировок)</div>
+            </div>
+            <button onclick="openBookingModal('Тариф LIMITED (10 000 ₸)', 'Оформление абонемента на 10 тренировок (30 дней)')" 
+              class="btn-behance-outline w-full text-xs py-3">
+              КУПИТЬ АБОНЕМЕНТ
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2: NO LIMITED (ХИТ ПРОДАЖ) -->
+        <div class="behance-card flex rounded overflow-hidden border-white/50 bg-[#121212] relative shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+          <div class="absolute top-0 right-0 bg-white text-black font-oswald font-bold text-[10px] tracking-widest uppercase px-3 py-1 rounded-bl">
+            ХИТ ПРОДАЖ
+          </div>
+          <div class="w-12 bg-white text-black border-r border-white flex items-center justify-center py-6">
+            <span class="vertical-text font-oswald font-bold text-xs uppercase tracking-[0.3em] text-black">
+              NO LIMITED
+            </span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col justify-between">
+            <div class="text-center">
+              <div class="text-3xl text-white mb-4"><i class="fa-solid fa-fire"></i></div>
+              <ul class="space-y-2.5 text-xs font-montserrat text-neutral-300 mb-6">
+                <li><strong class="text-white">Полный безлимит</strong> (∞ тренировок)</li>
+                <li>Срок действия: <strong class="text-white">30 дней</strong></li>
+                <li>Посещение в любой день и время</li>
+                <li>Все зоны (силовая, кардио, кросс)</li>
+                <li>Заморозка карты до 7 дней</li>
+              </ul>
+              <div class="font-oswald font-bold text-4xl text-white mb-1">12 000 ₸</div>
+              <div class="text-[11px] text-neutral-400 uppercase tracking-wider mb-6">1 Месяц (Полный Безлимит)</div>
+            </div>
+            <button onclick="openBookingModal('Тариф NO LIMITED (12 000 ₸)', 'Оформление месячного полного безлимита в VM GYM')" 
+              class="btn-behance-white w-full text-xs py-3">
+              КУПИТЬ АБОНЕМЕНТ
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: ПОДПИСКА НА 360 (ГОДОВОЙ VIP С ПОДАРКОМ) -->
+        <div class="behance-card flex rounded overflow-hidden">
+          <div class="w-12 bg-[#141414] border-r border-[#222222] flex items-center justify-center py-6">
+            <span class="vertical-text font-oswald font-bold text-xs uppercase tracking-[0.3em] text-[#888888]">
+              YEAR 360
+            </span>
+          </div>
+          <div class="p-8 flex-1 flex flex-col justify-between">
+            <div class="text-center">
+              <div class="text-3xl text-white mb-4"><i class="fa-solid fa-gift text-white"></i></div>
+              <ul class="space-y-2.5 text-xs font-montserrat text-neutral-400 mb-6">
+                <li><strong class="text-white">Полный безлимит 360 дней</strong> (∞)</li>
+                <li><strong class="text-white">🎁 Фирменный подарок</strong> от сети</li>
+                <li>Доступ во все залы VM GYM</li>
+                <li>Заморозка карты до 30 дней</li>
+                <li>Максимальная выгода в пересчете на месяц</li>
+              </ul>
+              <div class="font-oswald font-bold text-4xl text-white mb-1">120 000 ₸</div>
+              <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-6">360 Дней + 🎁 Подарок</div>
+            </div>
+            <button onclick="openBookingModal('Подписка на 360 (120 000 ₸)', 'Оформление годовой подписки на 360 дней с подарком')" 
+              class="btn-behance-outline w-full text-xs py-3">
+              КУПИТЬ АБОНЕМЕНТ
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ТРЕНЕРСКИЙ СОСТАВ (OUR COACHES - 34 ТРЕНЕРА)
+       ========================================== -->
+  <section id="coaches" class="py-24 bg-[#080808] border-b border-[#1A1A1A] relative overflow-hidden">
+    
+    <!-- Giant Stroked Background Text -->
+    <div class="absolute top-6 left-1/2 transform -translate-x-1/2 pointer-events-none select-none">
+      <span class="outline-text text-6xl sm:text-8xl lg:text-9xl tracking-[0.2em] whitespace-nowrap opacity-15">
+        VM GYM COACHES
+      </span>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header with Controls -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-2">КОМАНДА НАСТАВНИКОВ</span>
+          <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-2">
+            ТРЕНЕРЫ VM GYM
+          </h2>
+          <p class="text-neutral-400 text-sm font-montserrat max-w-xl">
+            34 сертифицированных тренера во всех 4 филиалах сети. Персональный подход, индивидуальные программы и гарантированный результат.
+          </p>
+        </div>
+
+        <!-- Carousel Navigation & View All Button -->
+        <div class="flex items-center gap-3 shrink-0">
+          <button id="open-coaches-modal-btn" class="btn-behance-outline text-xs py-3 px-5 flex items-center gap-2">
+            <i class="fa-solid fa-table-cells text-sm"></i>
+            ПОСМОТРЕТЬ ВСЕХ (34)
+          </button>
+          
+          <div class="flex items-center gap-2">
+            <button id="coaches-prev-btn" aria-label="Предыдущий тренер" class="w-11 h-11 bg-[#141414] hover:bg-white hover:text-black border border-[#222222] text-white flex items-center justify-center transition-all">
+              <i class="fa-solid fa-chevron-left text-sm"></i>
+            </button>
+            <button id="coaches-next-btn" aria-label="Следующий тренер" class="w-11 h-11 bg-[#141414] hover:bg-white hover:text-black border border-[#222222] text-white flex items-center justify-center transition-all">
+              <i class="fa-solid fa-chevron-right text-sm"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coaches Carousel Ribbon Track -->
+      <div class="coaches-carousel-wrapper">
+        <div id="coaches-track" class="coaches-track">
+          <!-- Dynamically populated from js/coaches.js (34 coaches) -->
+        </div>
+      </div>
+
+      <!-- Bottom Hint / Banner -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between p-4 bg-[#0E0E0E] border border-[#1C1C1C] rounded text-xs text-neutral-400 gap-4 font-montserrat">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-circle-info text-white text-base"></i>
+          <span>Нажмите «Записаться» на карточке любого тренера, чтобы перейти напрямую в его Instagram для консультации.</span>
+        </div>
+        <button id="open-coaches-modal-btn-2" class="text-white hover:underline font-oswald uppercase tracking-wider font-semibold whitespace-nowrap flex items-center gap-1.5">
+          Каталог всех 34 тренеров с фильтрами <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       КАЛЬКУЛЯТОР ИМТ (BMI CALCULATOR)
+       ========================================== -->
+  <section id="bmi" class="py-24 bg-[#0A0A0A] border-b border-[#1A1A1A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Status Table -->
+        <div class="lg:col-span-6 behance-card p-8 rounded">
+          <h3 class="font-oswald font-bold text-2xl tracking-[0.15em] uppercase text-white mb-6 border-b border-[#222222] pb-4">
+            ТАБЛИЦА СТАНДАРТОВ ИМТ
+          </h3>
+          
+          <div class="space-y-3 font-montserrat text-sm mb-6">
+            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
+              <span class="text-neutral-400">Менее 18.5</span>
+              <span class="font-bold text-white">Дефицит массы тела</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
+              <span class="text-neutral-400">18.5 – 24.9</span>
+              <span class="font-bold text-white">Нормальный баланс</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-[#1F1F1F]">
+              <span class="text-neutral-400">25.0 – 29.9</span>
+              <span class="font-bold text-white">Избыточный вес</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-neutral-400">30.0 и выше</span>
+              <span class="font-bold text-white">Высокий индекс массы</span>
+            </div>
+          </div>
+
+          <div id="bmi-result-box" class="hidden p-4 bg-[#141414] border border-[#2A2A2A] rounded mt-4">
+            <div class="text-xs uppercase font-oswald tracking-widest text-[#888888]">Ваш показатель:</div>
+            <div class="flex items-baseline gap-3 my-1">
+              <span id="bmi-value" class="font-oswald font-bold text-4xl text-white">22.4</span>
+              <span id="bmi-status" class="text-sm font-bold text-white">Норма</span>
+            </div>
+            <p id="bmi-advice" class="text-xs text-neutral-400 font-montserrat mt-2 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Right: Calculator Form -->
+        <div class="lg:col-span-6">
+          <div class="text-left mb-6">
+            <h2 class="font-oswald font-bold text-4xl tracking-[0.15em] uppercase text-white mb-2">
+              КАЛЬКУЛЯТОР ИМТ
+            </h2>
+            <p class="text-neutral-400 text-sm font-montserrat">
+              Рассчитайте индекс массы тела для персональной программы в VM GYM
+            </p>
+          </div>
+
+          <form id="bmi-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="number" id="bmi-height" required placeholder="Рост / см" 
+                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+              
+              <input type="number" id="bmi-weight" required placeholder="Вес / кг" 
+                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="number" id="bmi-age" placeholder="Возраст" 
+                class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+              
+              <select id="bmi-goal" class="w-full px-5 py-4 bg-[#121212] border border-[#222222] text-white font-montserrat text-sm focus:outline-none focus:border-white">
+                <option value="fatburn">Снижение веса / Рельеф</option>
+                <option value="muscle">Набор мышечной массы</option>
+                <option value="strength">Пауэрлифтинг / Сила</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn-behance-white w-full py-4 mt-2">
+              РАССЧИТАТЬ
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       КОНТАКТЫ И ЗАПИСЬ (CONTACT SECTION)
+       ========================================== -->
+  <section id="contact" class="py-24 bg-[#080808] border-b border-[#1A1A1A] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Image -->
+        <div class="lg:col-span-6">
+          <div class="relative h-[520px] rounded overflow-hidden border border-[#222222]">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop" 
+                 alt="VM GYM Атлет" 
+                 class="w-full h-full object-cover filter grayscale contrast-125">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8">
+              <span class="text-xs uppercase font-oswald tracking-[0.3em] text-[#888888] block mb-1">СВЯЖИТЕСЬ С НАМИ</span>
+              <h3 class="font-oswald font-bold text-3xl text-white">ЖДЕМ ВАС В ЗАЛАХ VM GYM</h3>
+              <p class="text-xs text-neutral-400 font-montserrat mt-2">Петропавловск: Сутюшева 55 (24/7) • Назарбаева 218 • Шухова 14 • Е. Казахстана 46</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="lg:col-span-6 behance-card p-8 sm:p-12 rounded">
+          <h2 class="font-oswald font-bold text-4xl tracking-[0.15em] uppercase text-white mb-2">
+            НАПИШИТЕ НАМ
+          </h2>
+          <p class="text-neutral-400 text-xs font-montserrat mb-8">
+            Оставьте заявку, и мы ответим вам в WhatsApp или перезвоним
+          </p>
+
+          <form id="main-lead-form" class="space-y-4">
+            <input type="text" id="lead-name" required placeholder="Ваше имя" 
+              class="w-full px-5 py-4 bg-[#141414] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+            
+            <input type="tel" id="lead-phone" required placeholder="Номер телефона / WhatsApp" 
+              class="w-full px-5 py-4 bg-[#141414] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+
+            <select id="lead-branch" class="w-full px-5 py-4 bg-[#141414] border border-[#222222] text-white font-montserrat text-sm focus:outline-none focus:border-white">
+              <option value="sutyusheva">ул. Карима Сутюшева, 55 (24/7 Круглосуточно)</option>
+              <option value="nazarbaeva">ул. Н. Назарбаева, 218 (07:00 – 00:00, Вс с 09:00)</option>
+              <option value="shukhova">ул. И.П. Шухова, 14 (07:00 – 23:00, Вс с 09:00)</option>
+              <option value="ekazakhstana">ул. Е. Казахстана, 46 (07:00 – 22:00, Вс с 09:00)</option>
+            </select>
+
+            <button type="submit" class="btn-behance-white w-full py-4 mt-2">
+              ОТПРАВИТЬ ЗАЯВКУ
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ПОДВАЛ САЙТА (FOOTER С INSTAGRAM И 2GIS)
+       ========================================== -->
+  <footer class="py-16 bg-[#050505] text-neutral-400 text-xs font-montserrat">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Колонка 1: VM GYM -->
+        <div>
+          <span class="font-oswald font-bold text-2xl tracking-[0.2em] text-white block mb-4">VM GYM</span>
+          <p class="text-neutral-500 leading-relaxed mb-4">
+            Сеть тренажёрных залов в Петропавловске (@vmgymkz). Профессиональное силовое оборудование, сертифицированные тренеры и сообщество атлетов.
+          </p>
+          <div class="flex gap-4 text-base text-white">
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="hover:text-neutral-400"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/77714853539" target="_blank" class="hover:text-neutral-400"><i class="fa-brands fa-whatsapp text-white"></i></a>
+            <a href="https://2gis.kz/petropavlovsk/search/VM%20GYM" target="_blank" class="hover:text-neutral-400"><i class="fa-solid fa-map-location-dot"></i></a>
+          </div>
+        </div>
+
+        <!-- Колонка 2: Адреса филиалов и график -->
+        <div>
+          <h5 class="font-oswald font-bold text-sm tracking-[0.2em] text-white uppercase mb-4">ФИЛИАЛЫ И ГРАФИК</h5>
+          <ul class="space-y-2.5 text-neutral-300">
+            <li class="border-b border-[#1A1A1A] pb-1.5">
+              <div class="font-semibold text-white">📍 ул. Карима Сутюшева, 55</div>
+              <div class="text-[11px] text-neutral-400 font-mono">Пн–Сб: 24/7 (Круглосуточно) • Вс: с 09:00</div>
+            </li>
+            <li class="border-b border-[#1A1A1A] pb-1.5">
+              <div class="font-semibold text-white">📍 ул. Н. Назарбаева, 218</div>
+              <div class="text-[11px] text-neutral-400 font-mono">Пн–Сб: 07:00 – 00:00 • Вс: 09:00 – 00:00</div>
+            </li>
+            <li class="border-b border-[#1A1A1A] pb-1.5">
+              <div class="font-semibold text-white">📍 ул. И.П. Шухова, 14</div>
+              <div class="text-[11px] text-neutral-400 font-mono">Пн–Сб: 07:00 – 23:00 • Вс: 09:00 – 23:00</div>
+            </li>
+            <li>
+              <div class="font-semibold text-white">📍 ул. Е. Казахстана, 46</div>
+              <div class="text-[11px] text-neutral-400 font-mono">Пн–Сб: 07:00 – 22:00 • Вс: 09:00 – 22:00</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Колонка 3: Instagram Grid -->
+        <div>
+          <h5 class="font-oswald font-bold text-sm tracking-[0.2em] text-white uppercase mb-4">INSTAGRAM @VMGYMKZ</h5>
+          <div class="grid grid-cols-3 gap-2">
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+            <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="h-16 rounded overflow-hidden"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale hover:grayscale-0"></a>
+          </div>
+        </div>
+
+        <!-- Колонка 4: Контакты и WhatsApp -->
+        <div>
+          <h5 class="font-oswald font-bold text-sm tracking-[0.2em] text-white uppercase mb-4">СВЯЗЬ</h5>
+          <p class="text-neutral-300 font-bold mb-1">+7 (771) 485-35-39</p>
+          <p class="text-neutral-500 text-[11px] mb-4">Звонки и сообщения WhatsApp</p>
+          <a href="https://wa.me/77714853539" target="_blank" class="btn-behance-white text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp text-black"></i> WHATSAPP
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-[#1A1A1A] flex flex-col sm:flex-row items-center justify-between text-neutral-600 gap-4">
+        <div>&copy; 2026 Сеть тренажёрных залов VM GYM (@vmgymkz). Все права защищены.</div>
+        <div class="flex gap-6">
+          <a href="https://www.instagram.com/vmgymkz/" target="_blank" class="hover:text-neutral-400">Instagram @vmgymkz</a>
+          <a href="https://2gis.kz/petropavlovsk" target="_blank" class="hover:text-neutral-400">2GIS Петропавловск</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       МОДАЛЬНОЕ ОКНО ЗАПИСИ
+       ========================================== -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+    <div class="behance-card w-full max-w-md p-8 border border-white/20 shadow-2xl relative animate-toast">
+      
+      <button id="modal-close" class="absolute top-4 right-4 text-neutral-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs uppercase font-oswald tracking-[0.2em] text-neutral-400">СЕТЬ ЗАЛОВ VM GYM</span>
+        <h3 id="modal-title" class="font-oswald font-bold text-2xl text-white mt-1">Запись на тренировку</h3>
+        <p id="modal-subtitle" class="text-neutral-400 text-xs font-montserrat mt-1">Оставьте контактные данные для подтверждения.</p>
+      </div>
+
+      <form id="modal-booking-form" class="space-y-4">
+        <input type="hidden" id="modal-extra-field" value="">
+
+        <input type="text" id="modal-name" required placeholder="Ваше имя" 
+          class="w-full px-4 py-3.5 bg-[#141414] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+
+        <input type="tel" id="modal-phone" required placeholder="+7 (___) ___-__-__" 
+          class="w-full px-4 py-3.5 bg-[#141414] border border-[#222222] text-white placeholder-neutral-500 font-montserrat text-sm focus:outline-none focus:border-white">
+
+        <select id="modal-branch" class="w-full px-4 py-3.5 bg-[#141414] border border-[#222222] text-white font-montserrat text-sm focus:outline-none focus:border-white">
+          <option value="sutyusheva">ул. Карима Сутюшева, 55 (24/7 Круглосуточно)</option>
+          <option value="nazarbaeva">ул. Н. Назарбаева, 218 (07:00 – 00:00, Вс с 09:00)</option>
+          <option value="shukhova">ул. И.П. Шухова, 14 (07:00 – 23:00, Вс с 09:00)</option>
+          <option value="ekazakhstana">ул. Е. Казахстана, 46 (07:00 – 22:00, Вс с 09:00)</option>
+        </select>
+
+        <button type="submit" class="btn-behance-white w-full py-3.5 mt-2">
+          ПОДТВЕРДИТЬ ЗАПИСЬ
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       МОДАЛЬНОЕ ОКНО: ВСЕ ТРЕНЕРЫ СЕТИ (34)
+       ========================================== -->
+  <div id="coaches-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 modal-backdrop">
+    <div class="behance-card w-full max-w-6xl max-h-[92vh] flex flex-col bg-[#0A0A0A] border border-white/20 shadow-2xl relative rounded-lg overflow-hidden animate-toast">
+      
+      <!-- Modal Header -->
+      <div class="p-6 sm:p-8 bg-[#0D0D0D] border-b border-[#1F1F1F] flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs uppercase font-oswald tracking-[0.25em] text-[#888888]">СЕТЬ ТРЕНАЖЕРНЫХ ЗАЛОВ VM GYM</span>
+            <span id="coaches-count-badge" class="text-[11px] font-oswald font-bold px-2 py-0.5 rounded bg-white text-black">
+              34 из 34
+            </span>
+          </div>
+          <h3 class="font-oswald font-bold text-2xl sm:text-3xl text-white uppercase tracking-wider mt-1">
+            ТРЕНЕРСКИЙ СОСТАВ СЕТИ
+          </h3>
+          <p class="text-neutral-400 text-xs font-montserrat mt-1">
+            Выберите вашего наставника. Кнопка «Записаться» перенаправит вас в личный Instagram тренера для консультации и записи.
+          </p>
+        </div>
+
+        <button id="close-coaches-modal-btn" aria-label="Закрыть окно" class="w-10 h-10 rounded bg-[#1A1A1A] hover:bg-white hover:text-black text-neutral-300 flex items-center justify-center text-lg transition-colors shrink-0 self-end sm:self-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Filters & Search Bar -->
+      <div class="p-4 sm:px-8 bg-[#111111] border-b border-[#1F1F1F] flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center shrink-0">
+        
+        <!-- Hall Filters -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <span class="text-[11px] uppercase font-oswald text-neutral-500 tracking-wider shrink-0 mr-1">Зал:</span>
+          <button data-hall="ALL" class="hall-filter-btn px-3 py-1.5 rounded text-xs font-oswald uppercase tracking-wider bg-white text-black font-bold transition-all whitespace-nowrap">Все залы</button>
+          <button data-hall="VM 1.0" class="hall-filter-btn px-3 py-1.5 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all whitespace-nowrap">VM 1.0 (Шухова)</button>
+          <button data-hall="VM 2.0" class="hall-filter-btn px-3 py-1.5 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all whitespace-nowrap">VM 2.0 (Сутюшева 24/7)</button>
+          <button data-hall="VM 3.0" class="hall-filter-btn px-3 py-1.5 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all whitespace-nowrap">VM 3.0 (Е.Казахстана)</button>
+          <button data-hall="VM 4.0" class="hall-filter-btn px-3 py-1.5 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all whitespace-nowrap">VM 4.0 (Назарбаева)</button>
+        </div>
+
+        <!-- Category Filters & Search -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[11px] uppercase font-oswald text-neutral-500 tracking-wider mr-1">Ранг:</span>
+            <button data-cat="ALL" class="cat-filter-btn px-2.5 py-1 rounded text-xs font-oswald uppercase tracking-wider bg-white text-black font-bold transition-all">Все</button>
+            <button data-cat="VIP" class="cat-filter-btn px-2.5 py-1 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all">VIP</button>
+            <button data-cat="MASTER" class="cat-filter-btn px-2.5 py-1 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all">MASTER</button>
+            <button data-cat="BASIC" class="cat-filter-btn px-2.5 py-1 rounded text-xs font-oswald uppercase tracking-wider bg-[#141414] hover:bg-[#222222] text-neutral-400 transition-all">BASIC</button>
+          </div>
+
+          <!-- Live Search -->
+          <div class="relative min-w-[200px]">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-xs"></i>
+            <input 
+              type="text" 
+              id="coaches-modal-search" 
+              placeholder="Поиск по имени / нику..." 
+              class="w-full pl-8 pr-3 py-1.5 bg-[#0A0A0A] border border-[#222222] text-white placeholder-neutral-500 text-xs font-montserrat rounded focus:outline-none focus:border-white transition-colors"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Coaches Grid (Scrollable Container) -->
+      <div class="p-6 sm:p-8 overflow-y-auto modal-custom-scroll flex-1">
+        <div id="all-coaches-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- Populated dynamically via js/coaches.js -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="js/coaches.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

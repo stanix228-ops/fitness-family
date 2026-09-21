@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0D0D0D;
+  --bg-card: #121212;
+  --bg-card-hover: #171717;
+  --border-color: #222222;
+  --border-light: rgba(255, 255, 255, 0.12);
+  --text-white: #FFFFFF;
+  --text-gray: #8E8E93;
+  --text-muted: #555555;
+  --accent-color: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography matching Behance */
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Giant Outline / Stroked Background Text */
+.outline-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  user-select: none;
+  pointer-events: none;
+}
+
+.outline-text-hover:hover {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Behance Card Borders */
+.behance-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.behance-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Button Styles from Behance */
+.btn-behance-white {
+  background-color: #FFFFFF;
+  color: #000000;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid #FFFFFF;
+  transition: all 0.25s ease;
+}
+
+.btn-behance-white:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+.btn-behance-outline {
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.25s ease;
+}
+
+.btn-behance-outline:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+}
+
+/* Vertical Rotated Text for Pricing */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.25em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Diagonal Overlay Lines */
+.grid-lines {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Program Card Overlay */
+.program-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 75%, rgba(0,0,0,0.98) 100%);
+}
+
+/* Toast animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-toast {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+}
+
+/* Coaches Carousel Styles */
+.coaches-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.coaches-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding: 10px 0 20px 0;
+  user-select: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+.coaches-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.coach-card {
+  flex: 0 0 280px;
+  background-color: #0E0E0E;
+  border: 1px solid #1F1F1F;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .coach-card {
+    flex: 0 0 300px;
+  }
+}
+
+.coach-card:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+}
+
+.coach-card .coach-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s ease;
+}
+
+.coach-card:hover .coach-img {
+  transform: scale(1.03);
+}
+
+.coach-badge-vip {
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+}
+
+.coach-badge-master {
+  background: rgba(147, 51, 234, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #C084FC;
+}
+
+.coach-badge-basic {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #E5E5E5;
+}
+
+/* Modal Scroll Container */
+.modal-custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-custom-scroll::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+.modal-custom-scroll::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+.modal-custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Pricing Table Styles */
+.pricing-table-container {
+  background: #0C0C0C;
+  border: 1px solid #1F1F1F;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pricing-table-header {
+  background: #141414;
+  border-bottom: 1px solid #242424;
+}
+
+.pricing-row {
+  border-bottom: 1px solid #1A1A1A;
+  transition: all 0.2s ease;
+}
+
+.pricing-row:last-child {
+  border-bottom: none;
+}
+
+.pricing-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.pricing-divider {
+  background: #080808;
+  border-top: 2px solid #222222;
+  border-bottom: 1px solid #1A1A1A;
+}
+
+.infinity-symbol {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
