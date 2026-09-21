@@ -536,18 +536,18 @@ function initCoachesCarousel() {
 
   // Touch handlers for mobile
   track.addEventListener('touchstart', (e) => {
-    isCarouselPaused = true;
+    pauseAutoscroll(4000);
     isPointerDown = true;
     hasDragged = false;
-    startX = e.touches[0].pageX - track.offsetLeft;
+    startX = e.touches[0].clientX;
     scrollLeftStart = track.scrollLeft;
   }, { passive: true });
 
   track.addEventListener('touchmove', (e) => {
     if (!isPointerDown) return;
-    const x = e.touches[0].pageX - track.offsetLeft;
+    const x = e.touches[0].clientX;
     const walk = (x - startX);
-    if (Math.abs(walk) > 4) {
+    if (Math.abs(walk) > 3) {
       hasDragged = true;
     }
     track.scrollLeft = scrollLeftStart - walk;
@@ -564,29 +564,40 @@ function initCoachesCarousel() {
 
   track.addEventListener('touchend', () => {
     isPointerDown = false;
-    pauseAutoscroll(3000);
+    pauseAutoscroll(3500);
   });
 
   track.addEventListener('touchcancel', () => {
     isPointerDown = false;
-    pauseAutoscroll(2000);
+    pauseAutoscroll(2500);
   });
 
-  // Mouse Drag handlers
+  // Native scroll handler for wrap-around
+  track.addEventListener('scroll', () => {
+    if (isPointerDown) return;
+    const halfWidth = track.scrollWidth / 2;
+    if (track.scrollLeft >= halfWidth) {
+      track.scrollLeft -= halfWidth;
+    } else if (track.scrollLeft <= 0) {
+      track.scrollLeft += halfWidth;
+    }
+  }, { passive: true });
+
+  // Mouse Drag handlers for desktop
   track.addEventListener('mousedown', (e) => {
     if (e.button !== 0) return;
-    isCarouselPaused = true;
+    pauseAutoscroll(4000);
     isPointerDown = true;
     hasDragged = false;
-    startX = e.pageX - track.offsetLeft;
+    startX = e.clientX;
     scrollLeftStart = track.scrollLeft;
   });
 
   window.addEventListener('mousemove', (e) => {
     if (!isPointerDown) return;
-    const x = e.pageX - track.offsetLeft;
+    const x = e.clientX;
     const walk = (x - startX);
-    if (Math.abs(walk) > 4) {
+    if (Math.abs(walk) > 3) {
       hasDragged = true;
     }
     track.scrollLeft = scrollLeftStart - walk;
@@ -604,7 +615,7 @@ function initCoachesCarousel() {
   window.addEventListener('mouseup', () => {
     if (isPointerDown) {
       isPointerDown = false;
-      pauseAutoscroll(3000);
+      pauseAutoscroll(3500);
     }
   });
 

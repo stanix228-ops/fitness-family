@@ -192,13 +192,12 @@ body {
   display: flex;
   gap: 20px;
   overflow-x: auto;
+  overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   padding: 10px 0 20px 0;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: pan-x pan-y pinch-zoom;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
   scroll-behavior: auto;
   cursor: grab;
 }
