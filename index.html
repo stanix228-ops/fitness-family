@@ -35,7 +35,7 @@
   </script>
 
   <!-- Custom Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="css/style.css?v=5.0">
+  <link rel="stylesheet" href="css/style.css?v=6.0">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -46,10 +46,10 @@
        ГЛАВНЫЙ HEADER С НАВИГАЦИЕЙ (FITNESS FAMILY)
        ========================================== -->
   <header id="main-header" class="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur-md border-b border-[#1A1A1A] transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 h-20 flex items-center justify-between gap-4 xl:gap-8">
       
       <!-- Логотип FITNESS FAMILY -->
-      <a href="#hero" class="flex items-center gap-3">
+      <a href="#hero" class="flex items-center gap-3 shrink-0">
         <img src="images/logo.png" alt="Fitness Family Logo" class="h-10 w-auto object-contain">
         <div class="flex flex-col">
           <span class="font-oswald font-bold text-xl sm:text-2xl tracking-[0.12em] text-white leading-none">
@@ -61,32 +61,32 @@
         </div>
       </a>
 
-      <!-- Меню сайта (в одну линию без переносов) -->
-      <nav class="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 font-oswald font-semibold text-xs xl:text-sm tracking-[0.1em] xl:tracking-[0.15em] text-[#A0A0A0] whitespace-nowrap shrink-0">
-        <a href="#hero" class="text-white hover:text-accent transition-colors whitespace-nowrap">ГЛАВНАЯ</a>
-        <a href="#branches" class="hover:text-white transition-colors whitespace-nowrap">ФИЛИАЛЫ</a>
-        <a href="#about" class="hover:text-white transition-colors whitespace-nowrap">О СЕТИ</a>
-        <a href="#programs" class="hover:text-white transition-colors whitespace-nowrap">НАПРАВЛЕНИЯ</a>
-        <a href="#services" class="hover:text-white transition-colors whitespace-nowrap">ИНФРАСТРУКТУРА</a>
-        <a href="#gallery" class="hover:text-white transition-colors whitespace-nowrap">ГАЛЕРЕЯ</a>
-        <a href="#pricing" class="hover:text-white transition-colors whitespace-nowrap">ТАРИФЫ</a>
-        <a href="#bmi" class="hover:text-white transition-colors whitespace-nowrap">ИМТ</a>
-        <a href="#contact" class="hover:text-white transition-colors whitespace-nowrap">КОНТАКТЫ</a>
+      <!-- Меню сайта (свободное размещение без наплыва) -->
+      <nav class="hidden xl:flex items-center gap-4 2xl:gap-7 font-oswald font-semibold text-xs 2xl:text-sm tracking-[0.12em] text-[#A0A0A0] shrink-0">
+        <a href="#hero" class="text-white hover:text-accent transition-colors py-1">ГЛАВНАЯ</a>
+        <a href="#branches" class="hover:text-white transition-colors py-1">ФИЛИАЛЫ</a>
+        <a href="#about" class="hover:text-white transition-colors py-1">О СЕТИ</a>
+        <a href="#programs" class="hover:text-white transition-colors py-1">ПРОГРАММЫ</a>
+        <a href="#services" class="hover:text-white transition-colors py-1">СЕРВИСЫ</a>
+        <a href="#gallery" class="hover:text-white transition-colors py-1">ГАЛЕРЕЯ</a>
+        <a href="#pricing" class="hover:text-white transition-colors py-1">ТАРИФЫ</a>
+        <a href="#bmi" class="hover:text-white transition-colors py-1">ИМТ</a>
+        <a href="#contact" class="hover:text-white transition-colors py-1">КОНТАКТЫ</a>
       </nav>
 
       <!-- Быстрые действия: Соцсети и кнопка записи -->
-      <div class="hidden sm:flex items-center gap-3 xl:gap-4 shrink-0">
+      <div class="hidden sm:flex items-center gap-3 xl:gap-5 shrink-0">
         <!-- Instagram Филиалы 1/2 -->
         <a href="https://www.instagram.com/fit.ness_family/" target="_blank" title="Instagram @fit.ness_family" 
-          class="flex items-center justify-center text-white hover:text-accent transition-colors text-lg p-1.5">
+          class="flex items-center justify-center text-white hover:text-accent transition-colors text-lg p-2">
           <i class="fa-brands fa-instagram text-xl"></i>
         </a>
 
         <!-- WhatsApp -->
         <a href="https://wa.me/77776187417" target="_blank" title="WhatsApp +7 (777) 618-74-17" 
-          class="flex items-center gap-2 text-white hover:text-accent transition-colors font-oswald text-xs font-bold tracking-wider p-1.5">
+          class="flex items-center gap-2 text-white hover:text-accent transition-colors font-oswald text-xs font-bold tracking-wider p-2">
           <i class="fa-brands fa-whatsapp text-xl text-[#25D366]"></i>
-          <span class="hidden xl:inline text-white">WHATSAPP</span>
+          <span class="hidden 2xl:inline text-white">WHATSAPP</span>
         </a>
 
         <!-- Кнопка Пробная тренировка -50% -->
@@ -97,7 +97,7 @@
       </div>
 
       <!-- Кнопка мобильного меню -->
-      <button id="mobile-menu-toggle" aria-label="Меню" class="lg:hidden text-white text-xl p-2 flex items-center justify-center focus:outline-none">
+      <button id="mobile-menu-toggle" aria-label="Меню" class="xl:hidden text-white text-xl p-2 flex items-center justify-center focus:outline-none">
         <i class="fa-solid fa-bars text-2xl"></i>
       </button>
 
@@ -136,12 +136,12 @@
        ========================================== -->
   <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-[#1A1A1A]">
     
-    <!-- Фоновое изображение залов Fitness Family -->
+    <!-- Фоновое изображение залов Fitness Family (посветлее и четче) -->
     <div class="absolute inset-0 z-0">
       <img src="images/hero-bg.jpg" 
            alt="Фитнес клуб Fitness Family Петропавловск" 
-           class="w-full h-full object-cover object-center filter brightness-[0.38] contrast-125">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-[#050505]/70"></div>
+           class="w-full h-full object-cover object-center filter brightness-[0.62] contrast-110">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-[#050505]/45"></div>
     </div>
 
     <!-- Контурный фоновый текст -->
@@ -162,14 +162,14 @@
       </div>
 
       <!-- Главный заголовок -->
-      <h1 class="font-oswald font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-[0.06em] uppercase leading-[1.05] mb-6 text-white">
+      <h1 class="font-oswald font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-[0.06em] uppercase leading-[1.05] mb-6 text-white hero-text-shadow">
         ВЫБЕРИ СВОЙ ФОРМАТ <br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#FFF066] to-[#FFE100]">
           ТРЕНИРОВОК
         </span>
       </h1>
 
-      <p class="text-neutral-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto font-montserrat font-normal leading-relaxed mb-8">
+      <p class="text-neutral-200 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto font-montserrat font-medium leading-relaxed mb-8 hero-text-shadow">
         5 филиалов с удобным расположением, более 20 направлений тренировок, кафе правильного питания, массажный кабинет и детская игровая комната. Всё для комфорта всей семьи!
       </p>
 
