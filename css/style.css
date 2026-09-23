@@ -451,59 +451,57 @@ body {
 }
 
 /* ==========================================
-   VERTICAL CAROUSEL & COACH CARD STYLES
+   HORIZONTAL ANIMATED COACHES CAROUSEL
    ========================================== */
-.v-carousel-viewport {
-  max-height: 840px;
-  overflow-y: auto;
-  overflow-x: hidden;
+.h-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: relative;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  padding: 12px 6px 30px 6px;
+  overscroll-behavior-x: contain;
+  padding: 16px 8px 36px 8px;
   scrollbar-width: thin;
   scrollbar-color: #FFE100 #141414;
+  cursor: grab;
+  user-select: none;
 }
 
-.v-carousel-viewport.grid-mode {
-  max-height: none !important;
-  overflow-y: visible !important;
+.h-carousel-viewport:active {
+  cursor: grabbing;
 }
 
-.v-carousel-viewport::-webkit-scrollbar {
-  width: 6px;
+.h-carousel-viewport::-webkit-scrollbar {
+  height: 6px;
 }
 
-.v-carousel-viewport::-webkit-scrollbar-track {
+.h-carousel-viewport::-webkit-scrollbar-track {
   background: #141414;
   border-radius: 9999px;
 }
 
-.v-carousel-viewport::-webkit-scrollbar-thumb {
+.h-carousel-viewport::-webkit-scrollbar-thumb {
   background: #FFE100;
   border-radius: 9999px;
 }
 
-.v-carousel-viewport::-webkit-scrollbar-thumb:hover {
+.h-carousel-viewport::-webkit-scrollbar-thumb:hover {
   background: #FFF066;
 }
 
-@media (max-width: 768px) {
-  .v-carousel-viewport {
-    max-height: 640px;
-    padding: 8px 2px 20px 2px;
-  }
-}
-
-.v-carousel-track {
-  display: grid;
-  transition: all 0.4s ease;
+.h-carousel-track {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 24px;
+  width: max-content;
+  align-items: stretch;
 }
 
 /* Кнопки фильтров */
-.v-filter-btn {
-  padding: 8px 16px;
+.h-filter-btn {
+  padding: 8px 18px;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 12px;
@@ -518,12 +516,12 @@ body {
   white-space: nowrap;
 }
 
-.v-filter-btn:hover {
+.h-filter-btn:hover {
   border-color: #FFE100;
   color: #FFFFFF;
 }
 
-.v-filter-btn.active {
+.h-filter-btn.active {
   background-color: #FFE100;
   border-color: #FFE100;
   color: #000000;
@@ -531,7 +529,9 @@ body {
 }
 
 /* 3D Выбор и приближение карточки при наведении */
-.v-coach-card {
+.h-coach-card {
+  flex: 0 0 320px;
+  width: 320px;
   position: relative;
   background-color: #121212;
   border: 1px solid #222222;
@@ -541,25 +541,32 @@ body {
   flex-direction: column;
   justify-content: space-between;
   transform: perspective(1200px) translateZ(0) scale(1);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.v-coach-card:hover {
+@media (max-width: 640px) {
+  .h-coach-card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+}
+
+.h-coach-card:hover {
   transform: perspective(1200px) translateZ(50px) scale(1.05) translateY(-8px);
   border-color: #FFE100;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 225, 0, 0.35);
   z-index: 30;
 }
 
-.v-coach-card .coach-img-wrapper {
+.h-coach-card .coach-img-wrapper {
   position: relative;
   height: 320px;
   overflow: hidden;
   background-color: #080808;
 }
 
-.v-coach-card .coach-img-wrapper img {
+.h-coach-card .coach-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -568,12 +575,12 @@ body {
   filter: contrast(105%);
 }
 
-.v-coach-card:hover .coach-img-wrapper img {
+.h-coach-card:hover .coach-img-wrapper img {
   transform: scale(1.08);
   filter: contrast(115%) brightness(1.05);
 }
 
-.v-coach-card .coach-info {
+.h-coach-card .coach-info {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -583,7 +590,7 @@ body {
   border-top: 1px solid #1C1C1C;
 }
 
-.v-coach-card:hover .coach-info {
+.h-coach-card:hover .coach-info {
   background: linear-gradient(180deg, #161616 0%, #0E0E0E 100%);
   border-top-color: rgba(255, 225, 0, 0.3);
 }
@@ -609,7 +616,7 @@ body {
   text-decoration: none;
 }
 
-.v-coach-card:hover .btn-coach-insta {
+.h-coach-card:hover .btn-coach-insta {
   background-color: #FFE100;
   color: #000000;
   border-color: #FFE100;

@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
-  initVerticalCoachesCarousel();
+  initHorizontalCoachesCarousel();
   initGallerySlider();
   initBmiCalculator();
   initModalsAndForms();
@@ -121,16 +121,16 @@ function initGallerySlider() {
 }
 
 /* ----------------------------------------------------
- * 2.1. Вертикальная карусель тренеров (14 тренеров сети)
+ * 2.1. Горизонтальная анимированная карусель тренеров (14 тренеров сети)
  * ---------------------------------------------------- */
-function initVerticalCoachesCarousel() {
-  const viewport = document.getElementById('v-carousel-viewport');
-  const track = document.getElementById('v-carousel-track');
-  const prevBtn = document.getElementById('v-carousel-prev');
-  const nextBtn = document.getElementById('v-carousel-next');
-  const toggleAllBtn = document.getElementById('v-carousel-toggle-all');
-  const toggleText = document.getElementById('v-toggle-text');
-  const filterBtns = document.querySelectorAll('.v-filter-btn');
+function initHorizontalCoachesCarousel() {
+  const viewport = document.getElementById('h-carousel-viewport');
+  const track = document.getElementById('h-carousel-track');
+  const prevBtn = document.getElementById('h-carousel-prev');
+  const nextBtn = document.getElementById('h-carousel-next');
+  const playPauseBtn = document.getElementById('h-carousel-playpause');
+  const playPauseIcon = document.getElementById('h-playpause-icon');
+  const filterBtns = document.querySelectorAll('.h-filter-btn');
 
   if (!viewport || !track) return;
 
@@ -144,7 +144,7 @@ function initVerticalCoachesCarousel() {
       : list.filter(c => c.directionTag === filter);
 
     track.innerHTML = filtered.map(coach => `
-      <div class="v-coach-card group" data-id="${coach.id}" data-tag="${coach.directionTag}">
+      <div class="h-coach-card group" data-id="${coach.id}" data-tag="${coach.directionTag}">
         <!-- Портретное фото тренера (без надписей на самом фото) -->
         <div class="coach-img-wrapper">
           <img src="${coach.image}" alt="${coach.name} — тренер сети Fitness Family" loading="lazy">
@@ -198,42 +198,144 @@ function initVerticalCoachesCarousel() {
   // Первоначальный рендер всех 14 тренеров
   renderCoaches('all');
 
-  // Кнопки прокрутки вверх и вниз
+  // Расчет шага скролла (ширина карточки + отступ)
   const getScrollStep = () => {
-    return Math.max(viewport.clientHeight * 0.75, 420);
+    const card = track.querySelector('.h-coach-card');
+    return card ? card.offsetWidth + 24 : 344;
   };
 
+  // Автопрокрутка
+  let autoScrollTimer = null;
+  let isAutoScrollPaused = false;
+  let isHovered = false;
+  let isInteracting = false;
+  let resumeTimeout = null;
+
+  const pauseTemporarily = (ms = 4500) => {
+    isInteracting = true;
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => {
+      isInteracting = false;
+    }, ms);
+  };
+
+  const doAutoScrollStep = () => {
+    if (isAutoScrollPaused || isHovered || isInteracting) return;
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    if (maxScroll <= 5) return;
+
+    const step = getScrollStep();
+    if (viewport.scrollLeft >= maxScroll - 20) {
+      // Плавно возвращаемся в начало карусели
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      viewport.scrollBy({ left: step, behavior: 'smooth' });
+    }
+  };
+
+  const startAutoScroll = () => {
+    if (autoScrollTimer) clearInterval(autoScrollTimer);
+    autoScrollTimer = setInterval(doAutoScrollStep, 3200);
+  };
+
+  // Запуск автопрокрутки
+  startAutoScroll();
+
+  // Остановка при наведении курсора мыши (чтобы пользователь мог спокойно прочитать и нажать кнопку)
+  viewport.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  viewport.addEventListener('mouseleave', () => {
+    isHovered = false;
+  });
+
+  // Кнопка Пауза / Плей
+  if (playPauseBtn && playPauseIcon) {
+    playPauseBtn.addEventListener('click', () => {
+      isAutoScrollPaused = !isAutoScrollPaused;
+      if (isAutoScrollPaused) {
+        playPauseIcon.className = 'fa-solid fa-play text-sm text-neutral-400';
+        playPauseBtn.setAttribute('title', 'Включить автопрокрутку');
+      } else {
+        playPauseIcon.className = 'fa-solid fa-pause text-sm text-accent';
+        playPauseBtn.setAttribute('title', 'Приостановить автопрокрутку');
+      }
+    });
+  }
+
+  // Ручная прокрутка кнопками Влево / Вправо
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      viewport.scrollBy({ top: -getScrollStep(), behavior: 'smooth' });
+      pauseTemporarily(6000);
+      const step = getScrollStep();
+      if (viewport.scrollLeft <= 10) {
+        viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior: 'smooth' });
+      } else {
+        viewport.scrollBy({ left: -step, behavior: 'smooth' });
+      }
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      viewport.scrollBy({ top: getScrollStep(), behavior: 'smooth' });
-    });
-  }
-
-  // Переключение режима «Показать всех (сетка)» / «Свернуть в карусель»
-  let isGridMode = false;
-  if (toggleAllBtn) {
-    toggleAllBtn.addEventListener('click', () => {
-      isGridMode = !isGridMode;
-      if (isGridMode) {
-        viewport.classList.add('grid-mode');
-        if (toggleText) toggleText.innerText = 'СВЕРНУТЬ В КАРУСЕЛЬ';
-        const icon = toggleAllBtn.querySelector('i');
-        if (icon) icon.className = 'fa-solid fa-arrows-up-down text-accent';
+      pauseTemporarily(6000);
+      const step = getScrollStep();
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      if (viewport.scrollLeft >= maxScroll - 10) {
+        viewport.scrollTo({ left: 0, behavior: 'smooth' });
       } else {
-        viewport.classList.remove('grid-mode');
-        if (toggleText) toggleText.innerText = 'ПОКАЗАТЬ ВСЕХ (14)';
-        const icon = toggleAllBtn.querySelector('i');
-        if (icon) icon.className = 'fa-solid fa-table-cells text-accent';
-        viewport.scrollTo({ top: 0, behavior: 'smooth' });
+        viewport.scrollBy({ left: step, behavior: 'smooth' });
       }
     });
   }
+
+  // Ручное перетаскивание мышью на десктопе
+  let isMouseDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+  let hasMoved = false;
+
+  viewport.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    hasMoved = false;
+    startX = e.pageX - viewport.offsetLeft;
+    scrollStart = viewport.scrollLeft;
+    pauseTemporarily(6000);
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (isMouseDown) {
+      isMouseDown = false;
+      pauseTemporarily(3500);
+    }
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+    if (!isMouseDown) return;
+    e.preventDefault();
+    const x = e.pageX - viewport.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(walk) > 5) hasMoved = true;
+    viewport.scrollLeft = scrollStart - walk;
+  });
+
+  // Защита от случайного клика по карточке при свайпе мышью
+  viewport.addEventListener('click', (e) => {
+    if (hasMoved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
+  // Ручной свайп пальцем на мобильных устройствах
+  viewport.addEventListener('touchstart', () => {
+    pauseTemporarily(7000);
+  }, { passive: true });
+
+  viewport.addEventListener('touchend', () => {
+    pauseTemporarily(4000);
+  }, { passive: true });
 
   // Фильтрация по направлениям
   filterBtns.forEach(btn => {
@@ -242,7 +344,8 @@ function initVerticalCoachesCarousel() {
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter') || 'all';
       renderCoaches(filter);
-      viewport.scrollTo({ top: 0, behavior: 'smooth' });
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
+      pauseTemporarily(5000);
     });
   });
 }

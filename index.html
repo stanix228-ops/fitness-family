@@ -35,7 +35,7 @@
   </script>
 
   <!-- Custom Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="css/style.css?v=8.0">
+  <link rel="stylesheet" href="css/style.css?v=9.0">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -647,69 +647,74 @@
   </section>
 
   <!-- ==========================================
-       ТРЕНЕРЫ СЕТИ (ВЕРТИКАЛЬНАЯ КАРУСЕЛЬ FITNESS FAMILY)
+       ТРЕНЕРЫ СЕТИ (ГОРИЗОНТАЛЬНАЯ АНИМИРОВАННАЯ КАРУСЕЛЬ FITNESS FAMILY)
        ========================================== -->
-  <section id="coaches" class="py-24 bg-[#060606] border-b border-[#1A1A1A] relative">
+  <section id="coaches" class="py-24 bg-[#060606] border-b border-[#1A1A1A] relative overflow-hidden">
     <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
       
       <!-- Заголовок секции и кнопки управления -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
         <div>
-          <span class="text-xs uppercase font-oswald tracking-[0.3em] text-accent block mb-2 font-bold">КОМАНДА FITNESS FAMILY</span>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xs uppercase font-oswald tracking-[0.3em] text-accent font-bold">КОМАНДА FITNESS FAMILY</span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/30 text-[10px] text-accent font-montserrat font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
+              АВТОПРОКРУТКА
+            </span>
+          </div>
           <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white">
             НАШИ ТРЕНЕРЫ
           </h2>
           <p class="text-neutral-400 text-sm font-montserrat mt-2 max-w-2xl leading-relaxed">
-            14 профессиональных сертифицированных тренеров сети с медицинским и профильным образованием. Листайте вертикально, выбирайте специализацию и записывайтесь напрямую в Instagram каждого инструктора или через наш клуб!
+            14 профессиональных сертифицированных тренеров сети. Карусель плавно прокручивается автоматически — вы также можете прокручивать её вручную свайпом, мышью или кнопками. При наведении карточка приближается!
           </p>
         </div>
 
-        <!-- Кнопки управления вертикальной каруселью -->
+        <!-- Кнопки ручного управления горизонтальной каруселью -->
         <div class="flex items-center gap-3 shrink-0">
-          <button id="v-carousel-prev" aria-label="Прокрутить вверх" title="Листать вверх"
+          <button id="h-carousel-prev" aria-label="Предыдущий тренер" title="Листать влево"
             class="w-12 h-12 rounded-full border border-[#2A2A2A] bg-[#121212] hover:bg-accent hover:border-accent hover:text-black flex items-center justify-center transition-all text-white shadow-lg">
-            <i class="fa-solid fa-arrow-up text-base"></i>
+            <i class="fa-solid fa-arrow-left text-base"></i>
           </button>
-          <button id="v-carousel-next" aria-label="Прокрутить вниз" title="Листать вниз"
+          <button id="h-carousel-next" aria-label="Следующий тренер" title="Листать вправо"
             class="w-12 h-12 rounded-full border border-[#2A2A2A] bg-[#121212] hover:bg-accent hover:border-accent hover:text-black flex items-center justify-center transition-all text-white shadow-lg">
-            <i class="fa-solid fa-arrow-down text-base"></i>
+            <i class="fa-solid fa-arrow-right text-base"></i>
           </button>
-          <button id="v-carousel-toggle-all"
-            class="px-5 py-3 rounded-full border border-[#2A2A2A] bg-[#121212] hover:border-accent font-oswald text-xs font-bold tracking-wider text-neutral-300 hover:text-white uppercase transition-all flex items-center gap-2 shadow-lg">
-            <i class="fa-solid fa-table-cells text-accent"></i>
-            <span id="v-toggle-text">ПОКАЗАТЬ ВСЕХ (14)</span>
+          <button id="h-carousel-playpause" aria-label="Пауза / Автопрокрутка" title="Остановить/Возобновить автопрокрутку"
+            class="w-12 h-12 rounded-full border border-[#2A2A2A] bg-[#121212] hover:border-accent flex items-center justify-center transition-all text-neutral-300 hover:text-white shadow-lg">
+            <i class="fa-solid fa-pause text-sm text-accent" id="h-playpause-icon"></i>
           </button>
         </div>
       </div>
 
       <!-- Фильтры по направлениям (Сайкл, Стретчинг, Джампинг, Фитнес, Пилатес, Bungee) -->
-      <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-6" id="coaches-filter-bar">
-        <button class="v-filter-btn active" data-filter="all">ВСЕ ТРЕНЕРЫ (14)</button>
-        <button class="v-filter-btn" data-filter="cycle">CYCLE (4)</button>
-        <button class="v-filter-btn" data-filter="stretching">СТРЕТЧИНГ (3)</button>
-        <button class="v-filter-btn" data-filter="jumping">JUMPING & ТАБАТА (2)</button>
-        <button class="v-filter-btn" data-filter="fitness">ГРУППОВОЙ ФИТНЕС (2)</button>
-        <button class="v-filter-btn" data-filter="bungee">BUNGEE (1)</button>
-        <button class="v-filter-btn" data-filter="pilates">ПИЛАТЕС (1)</button>
+      <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-3 mb-6 scrollbar-none" id="coaches-filter-bar">
+        <button class="h-filter-btn active" data-filter="all">ВСЕ ТРЕНЕРЫ (14)</button>
+        <button class="h-filter-btn" data-filter="cycle">CYCLE (4)</button>
+        <button class="h-filter-btn" data-filter="stretching">СТРЕТЧИНГ (3)</button>
+        <button class="h-filter-btn" data-filter="jumping">JUMPING & ТАБАТА (2)</button>
+        <button class="h-filter-btn" data-filter="fitness">ГРУППОВОЙ ФИТНЕС (2)</button>
+        <button class="h-filter-btn" data-filter="bungee">BUNGEE (1)</button>
+        <button class="h-filter-btn" data-filter="pilates">ПИЛАТЕС (1)</button>
       </div>
 
-      <!-- Вертикальная карусель: Вьюпорт со скроллом -->
-      <div id="v-carousel-viewport" class="v-carousel-viewport">
-        <!-- Сетка карточек внутри карусели -->
-        <div id="v-carousel-track" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Горизонтальная карусель: Вьюпорт со скроллом и автопрокруткой -->
+      <div id="h-carousel-viewport" class="h-carousel-viewport">
+        <!-- Горизонтальная дорожка карточек -->
+        <div id="h-carousel-track" class="h-carousel-track">
           <!-- Карточки 14 тренеров генерируются динамически -->
         </div>
       </div>
 
-      <!-- Нижняя строка: Инструкция по листанию -->
-      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 font-montserrat gap-3 pt-4 border-t border-[#1C1C1C]">
+      <!-- Нижняя строка: Подсказка по управлению -->
+      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 font-montserrat gap-3 pt-4 border-t border-[#1C1C1C]">
         <div class="flex items-center gap-2">
-          <i class="fa-solid fa-arrows-up-down text-accent"></i>
-          <span>Удобное листание: свайп пальцем на смартфоне, колесико мыши или стрелки управления</span>
+          <i class="fa-solid fa-arrows-left-right text-accent"></i>
+          <span>Прокручивайте горизонтально свайпом пальца на телефоне, перетаскиванием мыши или стрелками</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="fa-brands fa-instagram text-accent"></i>
-          <span>Нажмите «ЗАПИСАТЬСЯ В INSTAGRAM» для перехода в профиль тренера</span>
+          <span>Нажмите «ЗАПИСАТЬСЯ В INSTAGRAM» для перехода в профиль любого тренера</span>
         </div>
       </div>
 
@@ -1316,7 +1321,7 @@
   </div>
 
   <!-- JavaScript Files with Cache Busting -->
-  <script src="js/coaches.js?v=8.0"></script>
-  <script src="js/main.js?v=8.0"></script>
+  <script src="js/coaches.js?v=9.0"></script>
+  <script src="js/main.js?v=9.0"></script>
 </body>
 </html>
