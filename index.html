@@ -35,7 +35,7 @@
   </script>
 
   <!-- Custom Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="css/style.css?v=6.0">
+  <link rel="stylesheet" href="css/style.css?v=7.0">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -430,151 +430,211 @@
   </section>
 
   <!-- ==========================================
-       НАПРАВЛЕНИЯ ТРЕНИРОВОК (20+ НАПРАВЛЕНИЙ)
+       НАПРАВЛЕНИЯ ТРЕНИРОВОК (ПРОГРАММЫ FITNESS FAMILY)
        ========================================== -->
   <section id="programs" class="py-24 bg-[#080808] border-b border-[#1A1A1A]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
       
       <div class="text-center mb-16">
         <span class="text-xs uppercase font-oswald tracking-[0.3em] text-accent block mb-2 font-bold">ВЫБЕРИТЕ СВОЙ ФОРМАТ</span>
         <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white mb-4">
-          20+ НАПРАВЛЕНИЙ ТРЕНИРОВОК
+          НАПРАВЛЕНИЯ ТРЕНИРОВОК
         </h2>
         <p class="text-neutral-400 text-sm font-montserrat max-w-xl mx-auto">
-          От классического силового зала до инновационного Bungee Fitness и детских секций
+          8 ключевых форматов: от сайкла и силовых до уникальных Bungee, Джампинга и программ для мам
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <!-- Direction 1: ТРЕНАЖЕРНЫЙ ЗАЛ -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Тренажерный зал', 'Запись в тренажерный зал Fitness Family')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop" 
-                 alt="Тренажерный зал" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              СИЛОВЫЕ ЗОНЫ
-            </span>
+        <!-- 1: САЙКЛ -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Сайкл', 'Запись на сайкл-тренировку в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/cycle.jpg" 
+                   alt="Сайкл в Fitness Family" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                КАРДИО ДРАЙВ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              САЙКЛ
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Высокоинтенсивные групповые заезды на профессиональных велотренажерах. Мощное сжигание калорий, выносливость и драйв.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            ТРЕНАЖЕРНЫЙ ЗАЛ
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Профессиональные блочные тренажеры, гантельный ряд, зоны свободных весов и силовые рамы для атлетов любого уровня подготовки.
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
 
-        <!-- Direction 2: CYCLE STUDIO -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Cycle Studio', 'Запись на сайкл-тренировки в Fitness Family')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="images/gallery/gallery_1.jpg" 
-                 alt="Cycle Studio Fitness Family" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              КАРДИО ДРАЙВ
-            </span>
+        <!-- 2: ПРОЕКТ -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer border-accent/40" onclick="openBookingModal('Направление: Фитнес-проект', 'Запись в проект преображения Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/project.jpg" 
+                   alt="Фитнес-проект Fitness Family" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-accent text-black font-oswald text-xs font-bold uppercase tracking-wider">
+                ТРАНСФОРМАЦИЯ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              ПРОЕКТ
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Комплексный проект трансформации тела: индивидуальный план тренировок, контроль питания, замеры и гарантированный результат.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            CYCLE STUDIO
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Высокоинтенсивные кардио-тренировки на специальных велотренажерах под зажигательные треки. Мощное сжигание калорий и выносливость.
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
 
-        <!-- Direction 3: BUNGEE FITNESS -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Bungee Fitness', 'Запись на Bungee Fitness')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" 
-                 alt="Bungee Fitness" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              ИННОВАЦИЯ
-            </span>
+        <!-- 3: СИЛОВЫЕ -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Силовые тренировки', 'Запись на силовой тренинг в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/strength.jpg" 
+                   alt="Силовые тренировки Fitness Family" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                СИЛА & МЫШЦЫ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              СИЛОВЫЕ
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Работа со свободными весами, гантельный ряд, штанги и силовые рамы. Рост силы, формирование плотного и рельефного тела.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            BUNGEE FITNESS
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Уникальные тренировки на эластичных подвесных канатах. Ощущение невесомости, включение всех глубоких мышц без нагрузки на суставы.
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
 
-        <!-- Direction 4: КУДО & ЕДИНОБОРСТВА -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Кудо и единоборства', 'Запись на секцию Кудо для детей и взрослых')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" 
-                 alt="Кудо и единоборства" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              ДЕТИ & ВЗРОСЛЫЕ
-            </span>
+        <!-- 4: КАРДИО -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Кардио', 'Запись на кардио-тренировку в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/cardio.jpg" 
+                   alt="Кардио зона Fitness Family" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                ВЫНОСЛИВОСТЬ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              КАРДИО
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Беговые дорожки, эллипсоиды и степперы. Укрепление сердечно-сосудистой системы, повышение выносливости и тонус.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            КУДО / ЕДИНОБОРСТВА
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Японское боевое искусство для детей и взрослых. Дисциплина, координация, навыки самообороны и физическая подготовка под руководством мастера.
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
 
-        <!-- Direction 5: ЙОГА & STRETCHING -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Йога и Стретчинг', 'Запись на Йогу и Стретчинг в Fitness Family')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600&auto=format&fit=crop" 
-                 alt="Йога и стретчинг" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              ГИБКОСТЬ & РЕЛАКС
-            </span>
+        <!-- 5: ФИТНЕС -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Фитнес', 'Запись на фитнес в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/fitness.jpg" 
+                   alt="Фитнес программы Fitness Family" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                ТОНУС & ЭНЕРГИЯ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              ФИТНЕС
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Групповые занятия: Step, Pump, аэробика, функциональный тренинг и стретчинг для гармоничного развития тела и гибкости.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            ЙОГА & STRETCHING
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Развитие гибкости, здоровая осанка, мягкое вытяжение позвоночника и избавление от мышечных зажимов в комфортной атмосфере.
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
 
-        <!-- Direction 6: ГРУППОВОЙ ФИТНЕС & TABATA -->
-        <div class="behance-card p-6 rounded group cursor-pointer" onclick="openBookingModal('Направление: Групповые программы', 'Запись на групповые программы в Fitness Family')">
-          <div class="h-48 rounded overflow-hidden mb-5 relative">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" 
-                 alt="Групповой фитнес" 
-                 class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
-              ЭНЕРГИЯ & ТОНУС
-            </span>
+        <!-- 6: BUNGEE -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Bungee', 'Запись на Bungee Fitness')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/bungee.jpg" 
+                   alt="Bungee Fitness" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                ИННОВАЦИЯ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              BUNGEE
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Уникальные тренировки на эластичных канатах в невесомости. Включение глубоких мышц без осевой нагрузки на суставы.
+            </p>
           </div>
-          <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
-            ГРУППОВЫЕ ПРОГРАММЫ
-          </h3>
-          <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
-            Step, Pump, Tabata, пилатес и круговой функциональный тренинг. Заряжайтесь командной энергией и достигайте лучших результатов!
-          </p>
-          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
+            <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- 7: ДЖАМПИНГ -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Джампинг', 'Запись на Джампинг фитнес в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/jumping.jpg" 
+                   alt="Джампинг фитнес на батутах" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                ДРАЙВ & БАТУТЫ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              ДЖАМПИНГ
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Динамичные кардио-тренировки на специальных мини-батутах с ручкой. Эффективное сжигание калорий и защита суставов.
+            </p>
+          </div>
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
+            <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- 8: FITNESS MOM -->
+        <div class="behance-card p-6 rounded flex flex-col justify-between group cursor-pointer" onclick="openBookingModal('Направление: Fitness Mom', 'Запись на программу Fitness Mom в Fitness Family')">
+          <div>
+            <div class="h-52 rounded overflow-hidden mb-5 relative">
+              <img src="images/programs/fitness_mom.jpg" 
+                   alt="Fitness Mom тренировки" 
+                   class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-2.5 py-0.5 rounded bg-black/80 text-accent font-oswald text-xs font-bold uppercase tracking-wider">
+                МАМА & МАЛЫШ
+              </span>
+            </div>
+            <h3 class="font-oswald font-bold text-2xl text-white group-hover:text-accent transition-colors mb-2">
+              FITNESS MOM
+            </h3>
+            <p class="text-neutral-400 text-xs font-montserrat leading-relaxed mb-4">
+              Бережные тренировки для мам: послеродовое восстановление, укрепление мышц кора и спины, заряд бодрости и времени для себя.
+            </p>
+          </div>
+          <div class="text-accent text-xs font-oswald font-bold uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform pt-2 border-t border-[#1C1C1C]">
             <span>ЗАПИСАТЬСЯ</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
           </div>
         </div>
@@ -1184,6 +1244,6 @@
   </div>
 
   <!-- JavaScript Files with Cache Busting -->
-  <script src="js/main.js?v=5.0"></script>
+  <script src="js/main.js?v=7.0"></script>
 </body>
 </html>
