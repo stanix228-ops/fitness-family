@@ -35,7 +35,7 @@
   </script>
 
   <!-- Custom Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="css/style.css?v=8.0">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -67,6 +67,7 @@
         <a href="#branches" class="hover:text-white transition-colors py-1">ФИЛИАЛЫ</a>
         <a href="#about" class="hover:text-white transition-colors py-1">О СЕТИ</a>
         <a href="#programs" class="hover:text-white transition-colors py-1">ПРОГРАММЫ</a>
+        <a href="#coaches" class="hover:text-white transition-colors py-1">ТРЕНЕРЫ</a>
         <a href="#services" class="hover:text-white transition-colors py-1">СЕРВИСЫ</a>
         <a href="#gallery" class="hover:text-white transition-colors py-1">ГАЛЕРЕЯ</a>
         <a href="#pricing" class="hover:text-white transition-colors py-1">ТАРИФЫ</a>
@@ -111,6 +112,7 @@
       <a href="#branches" class="mobile-nav-link text-neutral-400 hover:text-white py-1">5 ФИЛИАЛОВ</a>
       <a href="#about" class="mobile-nav-link text-neutral-400 hover:text-white py-1">О СЕТИ</a>
       <a href="#programs" class="mobile-nav-link text-neutral-400 hover:text-white py-1">20+ НАПРАВЛЕНИЙ</a>
+      <a href="#coaches" class="mobile-nav-link text-neutral-400 hover:text-white py-1">14 ТРЕНЕРОВ</a>
       <a href="#services" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ИНФРАСТРУКТУРА</a>
       <a href="#gallery" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ГАЛЕРЕЯ ЗАЛОВ</a>
       <a href="#pricing" class="mobile-nav-link text-neutral-400 hover:text-white py-1">ТАРИФЫ И ЦЕНЫ</a>
@@ -639,6 +641,76 @@
           </div>
         </div>
 
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       ТРЕНЕРЫ СЕТИ (ВЕРТИКАЛЬНАЯ КАРУСЕЛЬ FITNESS FAMILY)
+       ========================================== -->
+  <section id="coaches" class="py-24 bg-[#060606] border-b border-[#1A1A1A] relative">
+    <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      
+      <!-- Заголовок секции и кнопки управления -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+        <div>
+          <span class="text-xs uppercase font-oswald tracking-[0.3em] text-accent block mb-2 font-bold">КОМАНДА FITNESS FAMILY</span>
+          <h2 class="font-oswald font-bold text-4xl sm:text-5xl tracking-[0.15em] uppercase text-white">
+            НАШИ ТРЕНЕРЫ
+          </h2>
+          <p class="text-neutral-400 text-sm font-montserrat mt-2 max-w-2xl leading-relaxed">
+            14 профессиональных сертифицированных тренеров сети с медицинским и профильным образованием. Листайте вертикально, выбирайте специализацию и записывайтесь напрямую в Instagram каждого инструктора или через наш клуб!
+          </p>
+        </div>
+
+        <!-- Кнопки управления вертикальной каруселью -->
+        <div class="flex items-center gap-3 shrink-0">
+          <button id="v-carousel-prev" aria-label="Прокрутить вверх" title="Листать вверх"
+            class="w-12 h-12 rounded-full border border-[#2A2A2A] bg-[#121212] hover:bg-accent hover:border-accent hover:text-black flex items-center justify-center transition-all text-white shadow-lg">
+            <i class="fa-solid fa-arrow-up text-base"></i>
+          </button>
+          <button id="v-carousel-next" aria-label="Прокрутить вниз" title="Листать вниз"
+            class="w-12 h-12 rounded-full border border-[#2A2A2A] bg-[#121212] hover:bg-accent hover:border-accent hover:text-black flex items-center justify-center transition-all text-white shadow-lg">
+            <i class="fa-solid fa-arrow-down text-base"></i>
+          </button>
+          <button id="v-carousel-toggle-all"
+            class="px-5 py-3 rounded-full border border-[#2A2A2A] bg-[#121212] hover:border-accent font-oswald text-xs font-bold tracking-wider text-neutral-300 hover:text-white uppercase transition-all flex items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-table-cells text-accent"></i>
+            <span id="v-toggle-text">ПОКАЗАТЬ ВСЕХ (14)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Фильтры по направлениям (Сайкл, Стретчинг, Джампинг, Фитнес, Пилатес, Bungee) -->
+      <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-6" id="coaches-filter-bar">
+        <button class="v-filter-btn active" data-filter="all">ВСЕ ТРЕНЕРЫ (14)</button>
+        <button class="v-filter-btn" data-filter="cycle">CYCLE (4)</button>
+        <button class="v-filter-btn" data-filter="stretching">СТРЕТЧИНГ (3)</button>
+        <button class="v-filter-btn" data-filter="jumping">JUMPING & ТАБАТА (2)</button>
+        <button class="v-filter-btn" data-filter="fitness">ГРУППОВОЙ ФИТНЕС (2)</button>
+        <button class="v-filter-btn" data-filter="bungee">BUNGEE (1)</button>
+        <button class="v-filter-btn" data-filter="pilates">ПИЛАТЕС (1)</button>
+      </div>
+
+      <!-- Вертикальная карусель: Вьюпорт со скроллом -->
+      <div id="v-carousel-viewport" class="v-carousel-viewport">
+        <!-- Сетка карточек внутри карусели -->
+        <div id="v-carousel-track" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Карточки 14 тренеров генерируются динамически -->
+        </div>
+      </div>
+
+      <!-- Нижняя строка: Инструкция по листанию -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 font-montserrat gap-3 pt-4 border-t border-[#1C1C1C]">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-arrows-up-down text-accent"></i>
+          <span>Удобное листание: свайп пальцем на смартфоне, колесико мыши или стрелки управления</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-brands fa-instagram text-accent"></i>
+          <span>Нажмите «ЗАПИСАТЬСЯ В INSTAGRAM» для перехода в профиль тренера</span>
+        </div>
       </div>
 
     </div>
@@ -1244,6 +1316,7 @@
   </div>
 
   <!-- JavaScript Files with Cache Busting -->
-  <script src="js/main.js?v=7.0"></script>
+  <script src="js/coaches.js?v=8.0"></script>
+  <script src="js/main.js?v=8.0"></script>
 </body>
 </html>

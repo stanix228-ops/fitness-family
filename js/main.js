@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initVerticalCoachesCarousel();
   initGallerySlider();
   initBmiCalculator();
   initModalsAndForms();
@@ -116,6 +117,133 @@ function initGallerySlider() {
     const x = e.pageX - track.offsetLeft;
     const walk = (x - startX) * 1.5;
     track.scrollLeft = scrollLeft - walk;
+  });
+}
+
+/* ----------------------------------------------------
+ * 2.1. Вертикальная карусель тренеров (14 тренеров сети)
+ * ---------------------------------------------------- */
+function initVerticalCoachesCarousel() {
+  const viewport = document.getElementById('v-carousel-viewport');
+  const track = document.getElementById('v-carousel-track');
+  const prevBtn = document.getElementById('v-carousel-prev');
+  const nextBtn = document.getElementById('v-carousel-next');
+  const toggleAllBtn = document.getElementById('v-carousel-toggle-all');
+  const toggleText = document.getElementById('v-toggle-text');
+  const filterBtns = document.querySelectorAll('.v-filter-btn');
+
+  if (!viewport || !track) return;
+
+  // Отрисовка карточек из базы данных
+  const renderCoaches = (filter = 'all') => {
+    const list = window.FITNESS_COACHES || (typeof FITNESS_COACHES !== 'undefined' ? FITNESS_COACHES : null);
+    if (!list || !Array.isArray(list)) return;
+
+    const filtered = filter === 'all'
+      ? list
+      : list.filter(c => c.directionTag === filter);
+
+    track.innerHTML = filtered.map(coach => `
+      <div class="v-coach-card group" data-id="${coach.id}" data-tag="${coach.directionTag}">
+        <!-- Портретное фото тренера (без надписей на самом фото) -->
+        <div class="coach-img-wrapper">
+          <img src="${coach.image}" alt="${coach.name} — тренер сети Fitness Family" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-85 group-hover:opacity-30 transition-opacity duration-300"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/90 border border-[#333333] text-accent font-oswald text-[11px] font-bold tracking-wider uppercase shadow-md">
+            ${coach.badge || coach.direction}
+          </span>
+        </div>
+
+        <!-- Информация о тренере в HTML-разметке сайта -->
+        <div class="coach-info flex-1 flex flex-col justify-between">
+          <div>
+            <div class="text-[11px] uppercase tracking-wider font-oswald font-bold text-accent mb-1">
+              ${coach.direction}
+            </div>
+            <h3 class="font-oswald font-bold text-xl sm:text-2xl text-white group-hover:text-accent transition-colors leading-tight mb-2">
+              ${coach.name}
+            </h3>
+            <p class="text-xs text-neutral-300 font-montserrat leading-relaxed mb-3">
+              ${coach.description}
+            </p>
+          </div>
+
+          <div>
+            <!-- Локация филиалов -->
+            <div class="flex items-start gap-2 text-[11px] text-neutral-400 font-montserrat mb-4 pt-3 border-t border-[#1F1F1F]">
+              <i class="fa-solid fa-location-dot text-accent text-xs mt-0.5 shrink-0"></i>
+              <span class="leading-tight">${coach.branches}</span>
+            </div>
+
+            <!-- Кнопка перехода в Instagram профиль тренера -->
+            <a href="https://www.instagram.com/${coach.instagram}/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-coach-insta mb-2">
+              <i class="fa-brands fa-instagram text-base"></i>
+              <span>ЗАПИСАТЬСЯ В INSTAGRAM</span>
+            </a>
+
+            <!-- Кнопка быстрой записи через клуб -->
+            <button onclick="openBookingModal('Тренер: ${coach.name}', 'Запись на тренировку к тренеру: ${coach.name} (${coach.direction})')"
+              class="w-full py-2 rounded bg-transparent hover:bg-white/5 border border-[#262626] hover:border-neutral-500 text-[11px] font-oswald tracking-wider uppercase text-neutral-400 hover:text-white transition-all">
+              ИЛИ ЗАПИСАТЬСЯ ЧЕРЕЗ САЙТ
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  };
+
+  // Первоначальный рендер всех 14 тренеров
+  renderCoaches('all');
+
+  // Кнопки прокрутки вверх и вниз
+  const getScrollStep = () => {
+    return Math.max(viewport.clientHeight * 0.75, 420);
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      viewport.scrollBy({ top: -getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      viewport.scrollBy({ top: getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  // Переключение режима «Показать всех (сетка)» / «Свернуть в карусель»
+  let isGridMode = false;
+  if (toggleAllBtn) {
+    toggleAllBtn.addEventListener('click', () => {
+      isGridMode = !isGridMode;
+      if (isGridMode) {
+        viewport.classList.add('grid-mode');
+        if (toggleText) toggleText.innerText = 'СВЕРНУТЬ В КАРУСЕЛЬ';
+        const icon = toggleAllBtn.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-arrows-up-down text-accent';
+      } else {
+        viewport.classList.remove('grid-mode');
+        if (toggleText) toggleText.innerText = 'ПОКАЗАТЬ ВСЕХ (14)';
+        const icon = toggleAllBtn.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-table-cells text-accent';
+        viewport.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Фильтрация по направлениям
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter') || 'all';
+      renderCoaches(filter);
+      viewport.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   });
 }
 
